@@ -965,7 +965,7 @@ public class Connector extends LifecycleMBeanBase  {
 
         super.initInternal();
 
-        // Initialize adapter
+        // 初始化适配器 （适配器作用：将转换成的request请求交个container处理）
         adapter = new CoyoteAdapter(this);
         protocolHandler.setAdapter(adapter);
 
@@ -990,6 +990,7 @@ public class Connector extends LifecycleMBeanBase  {
         }
 
         try {
+
             protocolHandler.init();
         } catch (Exception e) {
             throw new LifecycleException(

@@ -427,19 +427,19 @@ public class HostConfig implements LifecycleListener {
 
 
     /**
-     * Deploy applications for any directories or WAR files that are found
-     * in our "application root" directory.
+     * 部署context 3种方式
+     *
      */
     protected void deployApps() {
 
         File appBase = host.getAppBaseFile();
         File configBase = host.getConfigBaseFile();
         String[] filteredAppPaths = filterAppPaths(appBase.list());
-        // Deploy XML descriptors from configBase
+        // 通过XML加载项目
         deployDescriptors(configBase, configBase.list());
-        // Deploy WARs
+              // 通过将 项目打成war包， 放在webapp下启动项目
         deployWARs(appBase, filteredAppPaths);
-        // Deploy expanded folders
+        // 通过创建目录
         deployDirectories(appBase, filteredAppPaths);
 
     }
@@ -1581,6 +1581,7 @@ public class HostConfig implements LifecycleListener {
         }
 
         if (host.getDeployOnStartup())
+            // 部署webapp
             deployApps();
 
     }

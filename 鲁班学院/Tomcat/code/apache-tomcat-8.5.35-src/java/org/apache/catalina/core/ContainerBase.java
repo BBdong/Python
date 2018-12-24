@@ -921,19 +921,25 @@ public abstract class ContainerBase extends LifecycleMBeanBase
         // Start our subordinate components, if any
         logger = null;
         getLogger();
+
+        //集群判断
         Cluster cluster = getClusterInternal();
         if (cluster instanceof Lifecycle) {
             ((Lifecycle) cluster).start();
         }
+        //安全域判断
         Realm realm = getRealmInternal();
         if (realm instanceof Lifecycle) {
             ((Lifecycle) realm).start();
         }
 
-        // Start our child containers, if any
+        /*
+         *获取子容器
+         */
         Container children[] = findChildren();
         List<Future<Void>> results = new ArrayList<>();
         for (int i = 0; i < children.length; i++) {
+            //将子容器交给线程池 处理  ，通过StartChild  启动子容器
             results.add(startStopExecutor.submit(new StartChild(children[i])));
         }
 
@@ -963,7 +969,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
             ((Lifecycle) pipeline).start();
         }
 
-        //设置生命周期的状态
+        //设置生命周期的状态为string ,激发监听器
         setState(LifecycleState.STARTING);
 
         // 开启线程 ，启动子容器

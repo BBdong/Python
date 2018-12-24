@@ -727,7 +727,7 @@ public class StandardContext extends ContainerBase
     private boolean clearReferencesStopThreads = false;
 
     /**
-     * Should Tomcat attempt to terminate any {@link java.util.TimerThread}s
+     * Should Tomcat attempt to terminate any {}s
      * that have been started by the web application? If not specified, the
      * default value of <code>false</code> will be used.
      */
@@ -4995,11 +4995,8 @@ public class StandardContext extends ContainerBase
 
 
     /**
-     * Start this component and implement the requirements
-     * of {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
-     *
-     * @exception LifecycleException if this component detects a fatal error
-     *  that prevents this component from being used
+     * 启动context容器
+     * @throws LifecycleException
      */
     @Override
     protected synchronized void startInternal() throws LifecycleException {
@@ -5023,10 +5020,14 @@ public class StandardContext extends ContainerBase
             namingResources.start();
         }
 
-        // Post work directory
+        // 创建工作目录  work目录
         postWorkDirectory();
 
-        // Add missing components as necessary
+        // 加载资源项目资源  : 会按照以下顺序 加载资源
+        //包括  ：1、 conf  /context.xml(主要是加载 项目的web.xml)
+               //2、 WEB-INF /下的  lib 和 classes
+               //3、 jar 资源 <postResource></postResource>  基本不用
+               //4、 <postresource></postresource>          基本不用
         if (getResources() == null) {   // (1) Required by Loader
             if (log.isDebugEnabled())
                 log.debug("Configuring default Resources");
@@ -5039,21 +5040,22 @@ public class StandardContext extends ContainerBase
             }
         }
         if (ok) {
+            //获取资源后 启动资源
             resourcesStart();
         }
-
+        // WebappLoader  是 shareClassLoad 的子类  ，用于加载当前 web 的.class文件
         if (getLoader() == null) {
             WebappLoader webappLoader = new WebappLoader(getParentClassLoader());
             webappLoader.setDelegate(getDelegate());
             setLoader(webappLoader);
         }
 
-        // An explicit cookie processor hasn't been specified; use the default
+        //初始化 cookie
         if (cookieProcessor == null) {
             cookieProcessor = new Rfc6265CookieProcessor();
         }
 
-        // Initialize character set mapper
+        // 初始化字符集容器
         getCharsetMapper();
 
         // Validate required extensions
@@ -5071,7 +5073,7 @@ public class StandardContext extends ContainerBase
             ok = false;
         }
 
-        // Reading the "catalina.useNaming" environment variable
+        // 读取环境变量
         String useNamingProperty = System.getProperty("catalina.useNaming");
         if ((useNamingProperty != null)
             && (useNamingProperty.equals("false"))) {
@@ -5098,9 +5100,10 @@ public class StandardContext extends ContainerBase
 
         try {
             if (ok) {
-                // Start our subordinate components, if any
+                // 获取子组件
                 Loader loader = getLoader();
                 if (loader instanceof Lifecycle) {
+                    //启动子组件
                     ((Lifecycle) loader).start();
                 }
 
@@ -5126,7 +5129,7 @@ public class StandardContext extends ContainerBase
                 // too early, so it should be reset.
                 logger = null;
                 getLogger();
-
+                // 域的设置
                 Realm realm = getRealmInternal();
                 if(null != realm) {
                     if (realm instanceof Lifecycle) {
@@ -5150,10 +5153,15 @@ public class StandardContext extends ContainerBase
                     context.setAttribute(Globals.CREDENTIAL_HANDLER, safeHandler);
                 }
 
-                // Notify our interested LifecycleListeners
+                // 发动LifeCycle生命周期事件
+                //再调用contextConfig的webConfig()方法 解析web.xml(web.xml中封装了项目的servlet)，
+                // 再去解析servlet（jsp转成的，解析后，并不会去加载，而是请求到达的时候实例化servlet对象）
+                // 再调用contextConfig的webConfig()方法 解析web.xml(web.xml中封装了项目的servlet)，
+                // 再去解析servlet（jsp转成的，解析后，并不会去加载，而是请求到达的时候实例化servlet对象）
                 fireLifecycleEvent(Lifecycle.CONFIGURE_START_EVENT, null);
 
-                // Start our child containers, if not already started
+
+                //启动wapper,调用standardWapper的
                 for (Container child : findChildren()) {
                     if (!child.getState().isAvailable()) {
                         child.start();

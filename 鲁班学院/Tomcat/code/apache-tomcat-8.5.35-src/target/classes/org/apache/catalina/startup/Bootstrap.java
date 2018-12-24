@@ -524,12 +524,15 @@ public final class Bootstrap {
                 daemon.setAwait(true);
                 
                 /**
-                 * 通过反射调用Catalina的load方法 ,然后catalina的load方法来通过Degister解析器解析server.xml  来创建一个server对象，
-                 * 然后在通过set方法为server设置属性 ，然后getServer().init();  对server进行初始化 ，
-                 * 在初始化时再调用StandardServer的initInternal方法调用services[i].init();对service进行初始化 ，
-                 * 在初始化时再调用StandardService的initInternal方法中调用engine.init();对engine初始化  ，
-                 * 在初始化时再调用StandardEngine的initInternal方法进行getRealm()域和调用父类的initInternal创建启停的线程池; 当engine初始化完毕后 ，
-                 * 接着启动线程池，初始化Connector
+                 * Bootstrap.load(args);  ：通过反射调用Catalina的load方法 ,然后catalina的load方法来通过Degister解析器解析server.xml
+                 *  来创建一个server对象，然后在通过set方法为server设置属性 ，
+                 * 然后getServer().init();  对server进行初始化 ，在初始化时再调用StandardServer的initInternal方法调用services[i].init();
+                 * 对service进行初始化 ，在初始化时再调用StandardService的initInternal方法中调用engine.init();
+                 * 对engine初始化  ，在初始化时再调用StandardEngine的initInternal方法进行调用getRealm()对进行安全设置域和调用父类的initInternal创建启停的线程池;
+                 *      当engine初始化完毕后 ，接着启动线程池，
+                 * 初始化Connector ，然后调用Connector 的initInternal方法 初始化CoyoteAdapter适配器  ，
+                 * 然后调用protocolHandler.init();进行protocolHandler的初始化,由于是protocolHandler接口在运行时在子类AbstractProtocol的init方法中
+                 * 调用endpoint.init();对endpoint（链接器的监听器）进行初始化 ，初始化完成
                  */
                 daemon.load(args);
                 /*

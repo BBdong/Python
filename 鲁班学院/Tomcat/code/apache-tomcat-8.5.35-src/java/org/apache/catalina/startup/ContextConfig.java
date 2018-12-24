@@ -1064,11 +1064,7 @@ public class ContextConfig implements LifecycleListener {
     }
 
     /**
-     * Scan the web.xml files that apply to the web application and merge them
-     * using the rules defined in the spec. For the global web.xml files,
-     * where there is duplicate configuration, the most specific level wins. ie
-     * an application's web.xml takes precedence over the host level or global
-     * web.xml file.
+     * 扫描解析 web.xml文件
      */
     protected void webConfig() {
         /*

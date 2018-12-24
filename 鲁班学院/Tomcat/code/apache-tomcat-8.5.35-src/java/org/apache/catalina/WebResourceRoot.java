@@ -22,65 +22,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Represents the complete set of resources for a web application. The resources
- * for a web application comprise of multiple ResourceSets and when looking for
- * a Resource, the ResourceSets are processed in the following order:
- * <ol>
- * <li>Pre  - Resources defined by the &lt;PreResource&gt; element in the web
- *            application's context.xml. Resources will be searched in the order
- *            they were specified.</li>
- * <li>Main - The main resources for the web application - i.e. the WAR or the
- *            directory containing the expanded WAR</li>
- * <li>JARs - Resource JARs as defined by the Servlet specification. JARs will
- *            be searched in the order they were added to the ResourceRoot.</li>
- * <li>Post - Resources defined by the &lt;PostResource&gt; element in the web
- *            application's context.xml. Resources will be searched in the order
- *            they were specified.</li>
- * </ol>
- * The following conventions should be noted:
- * <ul>
- * <li>Write operations (including delete) will only be applied to the main
- *     ResourceSet. The write operation will fail if the presence of a Resource
- *     in one of the other ResourceSets effectively makes the operation on the
- *     main ResourceSet a NO-OP.</li>
- * <li>A file in a ResourceSet will hide a directory of the same name (and all
- *     the contents of that directory) in a ResourceSet that is later in the
- *     search order.</li>
- * <li>Only the main ResourceSet may define a META-INF/context.xml since that
- *     file defines the Pre- and Post-Resources.</li>
- * <li>As per the Servlet specification, any META-INF or WEB-INF directories in
- *     a resource JAR will be ignored.</li>
- * <li>Pre- and Post-Resources may define WEB-INF/lib and WEB-INF/classes in
- *     order to make additional libraries and/or classes available to the web
- *     application.
- * </ul>
- * This mechanism replaces and extends the following features that were present
- * in earlier versions:
- * <ul>
- * <li>Aliases               - Replaced by Post-Resources with the addition of
- *                             support for single files as well as directories
- *                             and JARs.</li>
- * <li>VirtualWebappLoader   - Replaced by Pre- and Post-Resources mapped to
- *                             WEB-INF/lib and WEB-INF/classes</li>
- * <li>VirtualDirContext     - Replaced by Pre- and Post-Resources</li>
- * <li>External repositories - Replaced by Pre- and Post-Resources mapped to
- *                             WEB-INF/lib and WEB-INF/classes</li>
- * <li>Resource JARs         - Same feature but implemented using the same
- *                             mechanism as all the other additional
- *                             resources.</li>
- * </ul>
- */
-/*
- * A potential future enhancement is to allow writing to any ResourceSet,
- * not just the main ResourceSet although that adds all sorts complications
- * including:
- * - which ResourceSet to write to
- * - unexpected behaviour when deleting a resource from one ResourceSet since
- *   that may unmask a resource in a lower priority ResourceSet so what was a
- *   delete looks like a replace with the user having no idea where the 'new'
- *   resource came from
- * - how to handle PUT when the target is read-only but it could be written to
- *   a higher priority ResourceSet that is read-write
+ * 封装了 context 项目的资源  ，用于操作项目资源
+ * 1、pre资源，获取/conf/context.xml（加载项目的web.xml）
  */
 public interface WebResourceRoot extends Lifecycle {
     /**
