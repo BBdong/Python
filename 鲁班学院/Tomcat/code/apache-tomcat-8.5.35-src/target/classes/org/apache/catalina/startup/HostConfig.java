@@ -427,7 +427,7 @@ public class HostConfig implements LifecycleListener {
 
 
     /**
-     * 部署context 的3中方式进行部署
+     * 部署context 3种方式
      *
      */
     protected void deployApps() {
@@ -437,7 +437,7 @@ public class HostConfig implements LifecycleListener {
         String[] filteredAppPaths = filterAppPaths(appBase.list());
         // 通过XML加载项目
         deployDescriptors(configBase, configBase.list());
-        // 通过将 项目打成war包， 放在webapp下启动项目
+              // 通过将 项目打成war包， 放在webapp下启动项目
         deployWARs(appBase, filteredAppPaths);
         // 通过创建目录
         deployDirectories(appBase, filteredAppPaths);

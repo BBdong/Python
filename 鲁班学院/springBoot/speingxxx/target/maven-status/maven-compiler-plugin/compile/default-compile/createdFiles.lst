@@ -1,0 +1,6 @@
+com\it\dao\T1Dao.class
+com\it\service\T1Service.class
+com\it\controller\T1Controller.class
+com\it\controller\T.class
+SpringApplicationContext.class
+WebApplication.class

@@ -50,25 +50,17 @@ import org.apache.juli.logging.LogFactory;
 public final class Bootstrap {
 
     private static final Log log = LogFactory.getLog(Bootstrap.class);
-
-    /**
-     * Daemon object used by main.
-     */
     private static Bootstrap daemon = null;
-
     private static final File catalinaBaseFile;
     private static final File catalinaHomeFile;
-
     private static final Pattern PATH_PATTERN = Pattern.compile("(\".*?\")|(([^,])*)");
 
     static {
         //获取tomcat的工作路径
         String userDir = System.getProperty("user.dir");
-
         // 获取catalina路径
         String home = System.getProperty(Globals.CATALINA_HOME_PROP);
         File homeFile = null;
-
         if (home != null) {
             File f = new File(home);
             try {
@@ -77,7 +69,6 @@ public final class Bootstrap {
                 homeFile = f.getAbsoluteFile();
             }
         }
-
         if (homeFile == null) {
             // First fall-back. See if current directory is a bin directory
             // in a normal Tomcat install
@@ -92,7 +83,6 @@ public final class Bootstrap {
                 }
             }
         }
-
         if (homeFile == null) {
             // Second fall-back. Use current directory
             File f = new File(userDir);
@@ -102,7 +92,6 @@ public final class Bootstrap {
                 homeFile = f.getAbsoluteFile();
             }
         }
-
         catalinaHomeFile = homeFile;
         System.setProperty(
                 Globals.CATALINA_HOME_PROP, catalinaHomeFile.getPath());
@@ -279,7 +268,6 @@ public final class Bootstrap {
      * @throws Exception Fatal initialization error
      */
     public void init() throws Exception {
-
     	//初始化 类加载器 ClassLoader
         initClassLoaders();
         //为当前线程设置上下文类加载器
@@ -291,7 +279,6 @@ public final class Bootstrap {
             log.debug("Loading startup class");
         //拿到类加载器后   获取Catalina类的 class对象  ，然后进行tomcat启动前的初始化
         Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
-        
         //实例化 catalina 类的实例
         Object startupInstance = startupClass.getConstructor().newInstance();
 
@@ -489,10 +476,8 @@ public final class Bootstrap {
             // 实例化
             Bootstrap bootstrap = new Bootstrap();
             try {
-            	
-            	//初始化 classLoader 
+            	//初始化 classLoader
                 bootstrap.init();
-                
             } catch (Throwable t) {
                 handleThrowable(t);
                 t.printStackTrace();
@@ -505,7 +490,6 @@ public final class Bootstrap {
             // a range of class not found exceptions.
             Thread.currentThread().setContextClassLoader(daemon.catalinaLoader);
         }
-
         try {
             String command = "start";
             if (args.length > 0) {
@@ -520,24 +504,19 @@ public final class Bootstrap {
                 args[args.length - 1] = "stop";
                 daemon.stop();
             } else if (command.equals("start")) {
-            	
                 daemon.setAwait(true);
-                
                 /**
                  * Bootstrap.load(args);  ：通过反射调用Catalina的load方法 ,然后catalina的load方法来通过Degister解析器解析server.xml
                  *  来创建一个server对象，然后在通过set方法为server设置属性 ，
-                 * 然后getServer().init();  对server进行初始化 ，在初始化时再调用StandardServer的initInternal方法调用services[i].init();
+                 * 然后getServer().init();  对server进行初始化 ，在初始化时再调用StandardServer的initInternal方法调用services[i].init();(service可能存在多个)
                  * 对service进行初始化 ，在初始化时再调用StandardService的initInternal方法中调用engine.init();
-                 * 对engine初始化  ，在初始化时再调用StandardEngine的initInternal方法进行调用getRealm()对进行安全设置域和调用父类的initInternal创建启停的线程池;
-                 *      当engine初始化完毕后 ，接着启动线程池，
+                 * 对engine初始化  ，在初始化时再调用StandardEngine的initInternal方法进行调用getRealm()对进行安全设置域和调用父类的initInternal创建启停的线程池;接着启动线程池，
                  * 初始化Connector ，然后调用Connector 的initInternal方法 初始化CoyoteAdapter适配器  ，
                  * 然后调用protocolHandler.init();进行protocolHandler的初始化,由于是protocolHandler接口在运行时在子类AbstractProtocol的init方法中
                  * 调用endpoint.init();对endpoint（链接器的监听器）进行初始化 ，初始化完成
                  */
                 daemon.load(args);
-                /*
-                 * 启动
-                 */
+                //  启动
                 daemon.start();
                 
                 if (null == daemon.getServer()) {
