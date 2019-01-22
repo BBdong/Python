@@ -1,0 +1,51 @@
+#Server Config
+server:
+  port: 8081
+  servlet:
+    context-path: /up
+
+  undertow:
+    io-threads: 8
+    worker-threads: 64
+    direct-buffers: true
+    buffer-size: 1024
+    accesslog:
+      enabled: true
+      rotate: true
+      dir: /apprun/logs/device-threat/access
+
+
+#Spring Config
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  application:
+    name: device-threat
+  cache:
+    cache-names: reputation
+  datasource:
+      url: jdbc:mysql://localhost:3306/mmall?useSSL=true
+      username: root
+      password: mmall
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        connection-timeout: 60000
+        idle-timeout: 3000
+        max-lifetime: 300000
+        minimum-idle: 1
+        maximum-pool-size: 20
+        pool-name: ${spring.application.name}
+        dataSourceProperties:
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+  mvc:
+    servlet:
+      load-on-startup: 1
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
