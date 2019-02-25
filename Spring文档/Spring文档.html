@@ -11577,13 +11577,13 @@ javadoc for details(强调了ReloadableResourceBundleMessageSource 扩展了Reso
 </div>
 </div>
 <div class="sect3">
-<h4 id="context-functionality-events"><a class="anchor" href="#context-functionality-events"></a>1.15.2. Standard and Custom Events</h4>
+<h4 id="context-functionality-events"><a class="anchor" href="#context-functionality-events"></a>1.15.2. Standard and Custom Events（自定义事件）</h4>
 <div class="paragraph">
 <p>Event handling in the <code>ApplicationContext</code> is provided through the <code>ApplicationEvent</code>
 class and the <code>ApplicationListener</code> interface. If a bean that implements the
 <code>ApplicationListener</code> interface is deployed into the context, every time an
 <code>ApplicationEvent</code> gets published to the <code>ApplicationContext</code>, that bean is notified.
-Essentially, this is the standard Observer design pattern.</p>
+Essentially, this is the standard Observer design pattern.（在Spring中如果bean实现了ApplicationListener接口，当ApplicationEventPublisher发布Event时，都会通知实现ApplicationListener的Bean）</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -11596,7 +11596,7 @@ As of Spring 4.2, the event infrastructure has been significantly improved and o
 an <a href="#context-functionality-events-annotation">annotation-based model</a> as well as the
 ability to publish any arbitrary event (that is, an object that does not necessarily
 extend from <code>ApplicationEvent</code>). When such an object is published, we wrap it in an
-event for you.
+event for you（在Spring 4.2后就支持使用注解实现事件的发布）.
 </td>
 </tr>
 </table>
@@ -11605,7 +11605,7 @@ event for you.
 <p>The following table describes the standard events that Spring provides:</p>
 </div>
 <table id="beans-ctx-events-tbl" class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. Built-in Events</caption>
+<caption class="title">Table 7. Built-in Events（5个内置事件）</caption>
 <colgroup>
 <col style="width: 30%;">
 <col style="width: 70%;">
@@ -11688,7 +11688,7 @@ simple class that extends Spring&#8217;s <code>ApplicationEvent</code> base clas
 <p>To publish a custom <code>ApplicationEvent</code>, call the <code>publishEvent()</code> method on an
 <code>ApplicationEventPublisher</code>. Typically, this is done by creating a class that implements
 <code>ApplicationEventPublisherAware</code> and registering it as a Spring bean. The following
-example shows such a class:</p>
+example shows such a class:（通常发布事件是通过实现 ApplicationEventPublisherAware来完成的）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11808,7 +11808,7 @@ integration needs, the separately maintained
 <a href="https://projects.spring.io/spring-integration/">Spring Integration</a> project provides
 complete support for building lightweight,
 <a href="http://www.enterpriseintegrationpatterns.com">pattern-oriented</a>, event-driven
-architectures that build upon the well-known Spring programming model.
+architectures that build upon the well-known Spring programming model（Spring的事件机制只能在同一个容器上下文才能使用，是为简单通信设计的 。对于功能复杂的企业集成项目并不能实现事件的发布 ， Spring Integration 可以做到）.
 </td>
 </tr>
 </table>
@@ -11818,7 +11818,7 @@ architectures that build upon the well-known Spring programming model.
 <div class="paragraph">
 <p>As of Spring 4.2, you can register an event listener on any public method of a managed
 bean by using the <code>EventListener</code> annotation. The <code>BlackListNotifier</code> can be rewritten as
-follows:</p>
+follows:（基于注解的事件实现）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11836,7 +11836,9 @@ follows:</p>
     <span class="directive">public</span> <span class="type">void</span> processBlackListEvent(BlackListEvent event) {
         <span class="comment">// notify appropriate parties via notificationAddress...</span>
     }
-}</code></pre>
+}
+</h6>总结：</h6></code></pre>
+
 </div>
 </div>
 </div>
@@ -11845,12 +11847,13 @@ follows:</p>
 <p>The method signature once again declares the event type to which it listens,
 but, this time, with a flexible name and without implementing a specific listener interface.
 The event type can also be narrowed through generics as long as the actual event type
-resolves your generic parameter in its implementation hierarchy.</p>
+resolves your generic parameter in its implementation hierarchy.（只需在方法上添加 @EventListener注解，那么在ApplicationEventPublisher 发布对应的事件时，就会自动调这个方法 
+</br>注意：注解@EventListener方法的事件类型 必须和发布的事件类型一直 ）</p>
 </div>
 <div class="paragraph">
 <p>If your method should listen to several events or if you want to define it with no
 parameter at all, the event types can also be specified on the annotation itself. The
-following example shows how to do so:</p>
+following example shows how to do so:（@EventListener 也提供了支持监听多个事件 ，两中写法如下）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
