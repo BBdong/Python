@@ -799,7 +799,7 @@ instance after it is constructed or returned from a factory method. The containe
 injects those dependencies when it creates the bean. This process is fundamentally
 the inverse (hence the name, Inversion of Control) of the bean itself
 controlling the instantiation or location of its dependencies by using direct
-construction of classes or a mechanism such as the Service Locator pattern.(这里交代了，依赖注入当的方式只有 构造器注入和get、set 方法注入)</p>
+construction of classes or a mechanism such as the Service Locator pattern.(这里交代了，IOC依赖DI过程 ，DI依赖注入当的方式只有 构造器注入和get、set 方法注入)</p>
 </div>
 <div class="paragraph">
 <p>The <code>org.springframework.beans</code> and <code>org.springframework.context</code> packages are the basis
@@ -5256,7 +5256,7 @@ declared on the <code>ConfigurableApplicationContext</code> interface, as the fo
 <p>When an <code>ApplicationContext</code> creates an object instance that implements the
 <code>org.springframework.context.ApplicationContextAware</code> interface, the instance is provided
 with a reference to that <code>ApplicationContext</code>. The following listing shows the definition
-of the <code>ApplicationContextAware</code> interface:</p>
+of the <code>ApplicationContextAware</code> interface:(解释ApplicationContextAware作用是用于获取ApplicationContext容器上下文的，因为他的抽象方法依赖的是ApplicationContext对象，因此可以通过这个接口来获取获取spring容器从而通过getBean获取bean)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -5280,7 +5280,8 @@ couples the code to Spring and does not follow the Inversion of Control style, w
 collaborators are provided to beans as properties. Other methods of the
 <code>ApplicationContext</code> provide access to file resources, publishing application events, and
 accessing a <code>MessageSource</code>. These additional features are described in
-<a href="#context-introduction">Additional Capabilities of the <code>ApplicationContext</code></a>.</p>
+<a href="#context-introduction">Additional Capabilities of the <code>ApplicationContext</code></a>.（强调ApplicationContextAware并不建议使用，另外也强调了ApplicationContext接口不仅是个容器也他也具备获取静态资源、发布事件、MessageSource:国际化的能力，因为他本身还继承了EnvironmentCapable, ListableBeanFactory, HierarchicalBeanFactory,
+		MessageSource, ApplicationEventPublisher, ResourcePatternResolve接口）</p>
 </div>
 <div class="paragraph">
 <p>As of Spring 2.5, autowiring is another alternative to obtain a reference to the
@@ -5292,13 +5293,13 @@ multiple parameter methods, use the new annotation-based autowiring features. If
 the <code>ApplicationContext</code> is autowired into a field, constructor argument, or method
 parameter that expects the <code>ApplicationContext</code> type if the field, constructor, or
 method in question carries the <code>@Autowired</code> annotation. For more information, see
-<a href="#beans-autowired-annotation">Using <code>@Autowired</code></a>.</p>
+<a href="#beans-autowired-annotation">Using <code>@Autowired</code></a>.（从spring2.5开始 自动装配的方式有两种byType、constructor来让bean之间建立依赖关系 ，为了有更好的灵活性最好是使用注解如：@Autowired来实现自动自动装配）</p>
 </div>
 <div class="paragraph">
 <p>When an <code>ApplicationContext</code> creates a class that implements the
 <code>org.springframework.beans.factory.BeanNameAware</code> interface, the class is provided with
 a reference to the name defined in its associated object definition. The following listing
-shows the definition of the BeanNameAware interface:</p>
+shows the definition of the BeanNameAware interface:（实现BeanNameAware接口的类 ，可以为当前类提供setName方法，来为这个类定义一个别名）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -5325,7 +5326,7 @@ init-method.</p>
 <a href="#beans-factory-aware">earlier</a>), Spring offers a range of <code>Aware</code> interfaces that let
 beans indicate to the container that they require a certain infrastructure dependency. As
 a general rule, the name is a good indication of the dependency type. The following table
-summarizes the most important <code>Aware</code> interfaces:</p>
+summarizes the most important <code>Aware</code> interfaces:（除了ApplicationContextAware和BeanNameAware接口，spring接口还提供了一系列的aware接口让bean实现）</p>
 </div>
 <table id="beans-factory-nature-aware-list" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 4. Aware interfaces</caption>
@@ -5343,12 +5344,12 @@ summarizes the most important <code>Aware</code> interfaces:</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApplicationContextAware</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApplicationContextAware（获取spring容器上下文）</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Declaring <code>ApplicationContext</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-aware"><code>ApplicationContextAware</code> and <code>BeanNameAware</code></a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApplicationEventPublisherAware</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApplicationEventPublisherAware（ApplicationEventPublisherAware回调接口负责将ApplicationEventPublisher对象注入到当前受管Bean实例中，以供分发事件使用类似BeanNameAware里面提供set方法）</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Event publisher of the enclosing <code>ApplicationContext</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#context-introduction">Additional Capabilities of the <code>ApplicationContext</code></a></p></td>
 </tr>
@@ -5363,7 +5364,7 @@ summarizes the most important <code>Aware</code> interfaces:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-aware"><code>ApplicationContextAware</code> and <code>BeanNameAware</code></a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BeanNameAware</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BeanNameAware（声明bean 的名字）</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the declaring bean.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-aware"><code>ApplicationContextAware</code> and <code>BeanNameAware</code></a></p></td>
 </tr>
@@ -11260,7 +11261,7 @@ javadoc for more detail. For more on AspectJ load-time weaving, see <a href="#ao
 </div>
 </div>
 <div class="sect2">
-<h3 id="context-introduction"><a class="anchor" href="#context-introduction"></a>1.15. Additional Capabilities of the <code>ApplicationContext</code></h3>
+<h3 id="context-introduction"><a class="anchor" href="#context-introduction"></a>1.15. Additional Capabilities of the <code>ApplicationContext(ApplicationContext的附加功能)</code></h3>
 <div class="paragraph">
 <p>As discussed in the <a href="#beans">chapter introduction</a>, the <code>org.springframework.beans.factory</code>
 package provides basic functionality for managing and manipulating beans, including in a
@@ -11271,7 +11272,7 @@ interfaces to provide additional functionality in a more application
 framework-oriented style. Many people use the <code>ApplicationContext</code> in a completely
 declarative fashion, not even creating it programmatically, but instead relying on
 support classes such as <code>ContextLoader</code> to automatically instantiate an
-<code>ApplicationContext</code> as part of the normal startup process of a Java EE web application.</p>
+<code>ApplicationContext</code> as part of the normal startup process of a Java EE web application.（在常规的javaEE项目中人们都是完全声明的方式创建applicationContext（xml配置，通过web.xml中引入ContextLoader来创建），几乎不用编程的方式创建ApplicationContext ，由于BeanFactory是Spring的容器 而ApplicationContext又是BeanFactory的扩展 因此也提供了如下额外的功能：）</p>
 </div>
 <div class="paragraph">
 <p>To enhance <code>BeanFactory</code> functionality in a more framework-oriented style, the context
@@ -11280,14 +11281,14 @@ package also provides the following functionality:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Access to messages in i18n-style, through the <code>MessageSource</code> interface.</p>
+<p>Access to messages in i18n-style, through the <code>MessageSource</code> interface.（通过MessageSource界面访问i18n风格的消息）</p>
 </li>
 <li>
-<p>Access to resources, such as URLs and files, through the <code>ResourceLoader</code> interface.</p>
+<p>Access to resources, such as URLs and files, through the <code>ResourceLoader</code> interface.（ResourceLoader界面访问URL和文件等资源）</p>
 </li>
 <li>
 <p>Event publication, namely to beans that implement the <code>ApplicationListener</code> interface,
-through the use of the <code>ApplicationEventPublisher</code> interface.</p>
+through the use of the <code>ApplicationEventPublisher</code> interface.（发布事件）</p>
 </li>
 <li>
 <p>Loading of multiple (hierarchical) contexts, letting each be focused on one
@@ -11340,7 +11341,13 @@ methods defined above.</p>
 <p>Spring provides two <code>MessageSource</code> implementations, <code>ResourceBundleMessageSource</code> and
 <code>StaticMessageSource</code>. Both implement <code>HierarchicalMessageSource</code> in order to do nested
 messaging. The <code>StaticMessageSource</code> is rarely used but provides programmatic ways to
-add messages to the source. The following example shows <code>ResourceBundleMessageSource</code>:</p>
+add messages to the source. The following example shows <code>ResourceBundleMessageSource</code>:（Spring提供了两种实现MessageSource的方式1：ResourceBundleMessageSource类 2：StaticMessageSource类，已经不使用 这二者都是实现了HierarchicalMessageSource： MessageResource<----HierarchicalMessageSource<----ResourceBundleMessageSource   ） MessageResource实现如下： 
+<a>StaticMessageSource:　　		  		主要用于测试环境，并不用于生产环境</a></br>
+<a>SpringSecurityMessageSource:　　		用于Spring security的国际化信息</a></br>
+<a>ReloadableResourceBundleMessageSource:可以在不用重新启动服务器的情况下，读取更改后的资源文件（推荐使用优于ResourceBundleMessageSource）</a></br>
+<a>ResourceBundleMessageSource:　　		用于生产环境</a></br>
+</p>
+
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11381,14 +11388,16 @@ message=Alligators rock!</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="error">#</span> in exceptions.properties
 argument.required=The {<span class="integer">0</span>} argument is required.</code></pre>
+
 </div>
 </div>
 </div>
 </div>
+
 <div class="paragraph">
 <p>The next example shows a program to execute the <code>MessageSource</code> functionality.
 Remember that all <code>ApplicationContext</code> implementations are also <code>MessageSource</code>
-implementations and so can be cast to the <code>MessageSource</code> interface.</p>
+implementations and so can be cast to the <code>MessageSource</code> interface.(强调请记住，所有ApplicationContext实现都是MessageSource 实现，因此可以强制转换为MessageSource接口)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11396,7 +11405,10 @@ implementations and so can be cast to the <code>MessageSource</code> interface.<
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
     MessageSource resources = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string"><span class="delimiter">&quot;</span><span class="content">beans.xml</span><span class="delimiter">&quot;</span></span>);
+	//参数1：properties中获取的message 参数2：传递的参数 
+	//参数3：如果没有获取到值，默认属性 参数4：Locale语言版本
     <span class="predefined-type">String</span> message = resources.getMessage(<span class="string"><span class="delimiter">&quot;</span><span class="content">message</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">null</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Default</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">null</span>);
+	
     <span class="predefined-type">System</span>.out.println(message);
 }</code></pre>
 </div>
@@ -11404,6 +11416,7 @@ implementations and so can be cast to the <code>MessageSource</code> interface.<
 </div>
 </div>
 <div class="paragraph">
+
 <p>The resulting output from the above program is as follows:</p>
 </div>
 <div class="exampleblock">
@@ -11411,6 +11424,20 @@ implementations and so can be cast to the <code>MessageSource</code> interface.<
 <div class="literalblock">
 <div class="content">
 <pre>Alligators rock!</pre>
+<h6>1：总结怎么用</h6>
+&nbsp;&nbsp;&nbsp;&nbsp;<1>在resource资源包中创建properties文件，格式有要求如 ： message_en_US.properties</br>
+&nbsp;&nbsp;&nbsp;&nbsp;<2>在javaConfig中引入ResourceBundleMessageSource支持 ， 注意：messsageReource.setBasenames("message");  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message是properties的文件前缀 ，这里不用加classpath：路径</br>  
+&nbsp;&nbsp;&nbsp;&nbsp;<3>通过Spring 的context容器获取MessageResorce</br>
+&nbsp;&nbsp;&nbsp;&nbsp;<4>MessageResorce.getMessage()  : return String</br></br>
+<h6>2：还可以传参通过占位符{x} x：位置 </h6>
+当通过getMessage（参数1，参数2，参数3，默认属性，参数4）获取消息时
+参数1：properties中获取的message
+参数2：传递的参数
+参数3：如果没有获取到值，默认属性
+参数4：Locale语言版本
+<h6>3：另外properties的文件命名也有要求</h6></br>
+<h6>4：占位符也可以扩展</h6>
+
 </div>
 </div>
 </div>
@@ -11425,7 +11452,7 @@ classpath and are called <code>format.properties</code>, <code>exceptions.proper
 </div>
 <div class="paragraph">
 <p>The next example shows arguments passed to the message lookup. These arguments are
-converted into <code>String</code> objects and inserted into placeholders in the lookup message.</p>
+converted into <code>String</code> objects and inserted into placeholders in the lookup message.(下面将的是如何使用占位符，上面步骤中已经说了)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11543,7 +11570,7 @@ file format but is more flexible than the standard JDK based
 files from any Spring resource location (not only from the classpath) and supports hot
 reloading of bundle property files (while efficiently caching them in between).
 See the <a href="https://docs.spring.io/spring-framework/docs/5.1.5.RELEASE/javadoc-api/org/springframework/context/support/ReloadableResourceBundleMessageSource.html"><code>ReloadableResourceBundleMessageSource</code></a>
-javadoc for details.
+javadoc for details(强调了ReloadableResourceBundleMessageSource 扩展了ResourceBundleMessageSource 支持热加载).
 </td>
 </tr>
 </table>
