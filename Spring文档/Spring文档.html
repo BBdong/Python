@@ -11655,13 +11655,14 @@ or restarted.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>RequestHandledEvent</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A web-specific event telling all beans that an HTTP request has been serviced. This
 event is published after the request is complete. This event is only applicable to
-web applications that use Spring&#8217;s <code>DispatcherServlet</code>.</p></td>
+web applications that use Spring&#8217;s <code>DispatcherServlet</code>.（	
+一个特定于Web的事件，告诉所有bean已经为HTTP请求提供服务。请求完成后发布此事件。此事件仅适用于使用Spring的Web应用程序DispatcherServlet）</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p>You can also create and publish your own custom events. The following example shows a
-simple class that extends Spring&#8217;s <code>ApplicationEvent</code> base class:</p>
+simple class that extends Spring&#8217;s <code>ApplicationEvent</code> base class:（也可以自定义事件）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11714,7 +11715,9 @@ example shows such a class:（通常发布事件是通过实现 ApplicationEvent
         }
         <span class="comment">// send email...</span>
     }
-}</code></pre>
+}
+</br><h7>注意：</h7>
+一般发布事件的服务最好 添加集合属性 这样易于扩展！ </code></pre>
 </div>
 </div>
 </div>
@@ -11814,7 +11817,7 @@ architectures that build upon the well-known Spring programming model（Spring�
 </table>
 </div>
 <div class="sect4">
-<h5 id="context-functionality-events-annotation"><a class="anchor" href="#context-functionality-events-annotation"></a>Annotation-based Event Listeners</h5>
+<h5 id="context-functionality-events-annotation"><a class="anchor" href="#context-functionality-events-annotation"></a>Annotation-based Event Listeners：基于注解的事件实现</h5>
 <div class="paragraph">
 <p>As of Spring 4.2, you can register an event listener on any public method of a managed
 bean by using the <code>EventListener</code> annotation. The <code>BlackListNotifier</code> can be rewritten as
@@ -11837,7 +11840,12 @@ follows:（基于注解的事件实现）</p>
         <span class="comment">// notify appropriate parties via notificationAddress...</span>
     }
 }
-</h6>总结：</h6></code></pre>
+</h6>总结：</h6>
+1、之后发布的事件和Listener监听的事件一致 才能触发监听</br>
+2、如果是异步事件javaConfig类必须启动@EnableAsync 提供对注解的支持</br>
+3、@EventListener 可以支持对多事件的监听 ，下面有说是使用</code></pre>
+
+</code></pre>
 
 </div>
 </div>
@@ -11874,7 +11882,8 @@ invoke the method for a particular event.</p>
 </div>
 <div class="paragraph">
 <p>The following example shows how our notifier can be rewritten to be invoked only if the <code>content</code> attribute
-of the event is equal to <code>my-event</code>:</p>
+of the event is equal to <code>my-event</code>:(<h7>通过spEL表达式可以 对Event中属性的值进行筛选
+</h7>)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -11883,7 +11892,9 @@ of the event is equal to <code>my-event</code>:</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@EventListener</span>(condition = <span class="string"><span class="delimiter">&quot;</span><span class="content">#blEvent.content == 'my-event'</span><span class="delimiter">&quot;</span></span>)
 <span class="directive">public</span> <span class="type">void</span> processBlackListEvent(BlackListEvent blEvent) {
     <span class="comment">// notify appropriate parties via notificationAddress...</span>
-}</code></pre>
+}
+	</code></pre>
+
 </div>
 </div>
 </div>
@@ -11992,18 +12003,18 @@ following example shows how to do so:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Be aware of the following limitations when using asynchronous events:</p>
+<p>Be aware of the following limitations when using asynchronous events:使用异步事件需要注意：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>If the event listener throws an <code>Exception</code>, it is not propagated to the caller
-See <code>AsyncUncaughtExceptionHandler</code> for more details.</p>
+See <code>AsyncUncaughtExceptionHandler</code> for more details.如果触发的监听跑出了Exception ，因为是异步的 他则不会往上抛给事件发布者 </p>
 </li>
 <li>
 <p>Such event listener cannot send replies. If you need to send another event as the
 result of the processing, inject <a href="https://docs.spring.io/spring-framework/docs/5.1.5.RELEASE/javadoc-api/org/springframework/aop/interceptor/AsyncUncaughtExceptionHandler.html"><code>ApplicationEventPublisher</code></a> to send the event
-manually.</p>
+manually.（如果还需要将监听触发后d的结果发送给另一个监听 ，则需要手动调用ApplicationEventPublisher 继续发布事件）</p>
 </li>
 </ul>
 </div>
@@ -12012,8 +12023,10 @@ manually.</p>
 <h5 id="context-functionality-events-order"><a class="anchor" href="#context-functionality-events-order"></a>Ordering Listeners</h5>
 <div class="paragraph">
 <p>If you need one listener to be invoked before another one, you can add the <code>@Order</code>
-annotation to the method declaration, as the following example shows:</p>
+annotation to the method declaration, as the following example shows:（如果发布一个事件触发的两个监听 ，而触发的监听又有先后顺序  则可以使用@Order注解设置触发优先级：值有效优先级越高 ）</p>
 </div>
+<h7>注意@order注解也适用下面的场景：</h7>
+加入在项目初始化时需要Bean的实例化是有严格的先后顺序的 则可以使用@order注解
 <div class="exampleblock">
 <div class="content">
 <div class="listingblock">
@@ -12094,7 +12107,7 @@ an event.
 </div>
 </div>
 <div class="sect3">
-<h4 id="context-functionality-resources"><a class="anchor" href="#context-functionality-resources"></a>1.15.3. Convenient Access to Low-level Resources</h4>
+<h4 id="context-functionality-resources"><a class="anchor" href="#context-functionality-resources"></a>1.15.3. Convenient Access to Low-level Resources:访问静态资源</h4>
 <div class="paragraph">
 <p>For optimal usage and understanding of application contexts, you should
 familiarize yourself with Spring&#8217;s <code>Resource</code> abstraction, as described in
@@ -25734,5 +25747,5 @@ Last updated 2019-02-13 05:31:19 UTC
 <script data-cfasync="false" src="https://docs.spring.io/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/tocbot-3.0.2/tocbot.js"></script>
 <script>var oldtoc=document.getElementById('toctitle').nextElementSibling;var newtoc=document.createElement('div');newtoc.setAttribute('id','tocbot');newtoc.setAttribute('class','js-toc');oldtoc.parentNode.replaceChild(newtoc,oldtoc);tocbot.init({contentSelector:'#content',headingSelector:'h1, h2, h3, h4, h5',smoothScroll:false});var handleTocOnResize=function(){var width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;if(width<768){tocbot.refresh({contentSelector:'#content',headingSelector:'h1, h2, h3, h4, h5',collapseDepth:6,activeLinkClass:'ignoreactive',throttleTimeout:1000,smoothScroll:false});}else{tocbot.refresh({contentSelector:'#content',headingSelector:'h1, h2, h3, h4, h5',smoothScroll:false});}};window.addEventListener('resize',handleTocOnResize);handleTocOnResize();var link=document.createElement("a");link.setAttribute("href","index.html");link.innerHTML="<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>&nbsp;&nbsp;Back to index";var p=document.createElement("p");p.appendChild(link);var toc=document.getElementById('toc')
 var next=document.getElementById('toctitle').nextElementSibling;toc.insertBefore(p,next);</script>
-<script>if(window.parent==window){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','analytics.js','ga');ga('create','UA-2728886-23','auto',{'siteSpeedSampleRate':100});ga('send','pageview');}</script></body>
+<script>if(window.parent==window){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-2728886-23','auto',{'siteSpeedSampleRate':100});ga('send','pageview');}</script></body>
 </html>
