@@ -163,14 +163,14 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
-<li><a href="#beans-dependencies">1.4. Dependencies</a>
+<li><a href="#beans-dependencies">1.4. Dependencies:依赖</a>
 <ul class="sectlevel3">
-<li><a href="#beans-factory-collaborators">1.4.1. Dependency Injection</a>
+<li><a href="#beans-factory-collaborators">1.4.1. Dependency Injection：依赖注入</a>
 <ul class="sectlevel4">
-<li><a href="#beans-constructor-injection">Constructor-based Dependency Injection</a></li>
-<li><a href="#beans-setter-injection">Setter-based Dependency Injection</a></li>
-<li><a href="#beans-dependency-resolution">Dependency Resolution Process</a></li>
-<li><a href="#beans-some-examples">Examples of Dependency Injection</a></li>
+<li><a href="#beans-constructor-injection">Constructor-based Dependency Injection：基于构造器的依赖注入</a></li>
+<li><a href="#beans-setter-injection">Setter-based Dependency Injection：基于set方法的依赖注入</a></li>
+<li><a href="#beans-dependency-resolution">Dependency Resolution Process：依赖的过程</a></li>
+<li><a href="#beans-some-examples">Examples of Dependency Injection：依赖注入的例子</a></li>
 </ul>
 </li>
 <li><a href="#beans-factory-properties-detailed">1.4.2. Dependencies and Configuration in Detail</a>
@@ -1321,7 +1321,7 @@ a dependency on a specific bean through metadata (such as an autowiring annotati
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-definition"><a class="anchor" href="#beans-definition"></a>1.3. Bean Overview</h3>
+<h3 id="beans-definition"><a class="anchor" href="#beans-definition"></a>1.3. Bean Overview:bean的概述</h3>
 <div class="paragraph">
 <p>A Spring IoC container manages one or more beans. These beans are created with the
 configuration metadata that you supply to the container (for example, in the form of XML
@@ -1329,7 +1329,7 @@ configuration metadata that you supply to the container (for example, in the for
 </div>
 <div class="paragraph">
 <p>Within the container itself, these bean definitions are represented as <code>BeanDefinition</code>
-objects, which contain (among other information) the following metadata:</p>
+objects, which contain (among other information) the following metadata:（讲述springIOC容器管理bean，并且可以在定义bean的时候声明bean的属性，具体可以声明的属性具体包括如下）</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1370,40 +1370,40 @@ The following table describes these properties:</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class：类的全限定的类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-class">Instantiating Beans</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name：类在容器中的别名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-beanname">Naming Beans</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Scope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scope：作用范围</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-scopes">Bean Scopes</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constructor arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constructor arguments：构造参数（在实例化调用构造器时传入指定的参数）</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-collaborators">Dependency Injection</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Properties依赖注入的属性：构造器注入和set注入</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-collaborators">Dependency Injection</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Autowiring mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autowiring mode自动装配：默认是关闭的</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-autowire">Autowiring Collaborators</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lazy initialization mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lazy initialization mode：懒加载，当使用时才被容器实例化</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-lazy-init">Lazy-initialized Beans</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initialization method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialization method：bean 的初始化回调 ，当每个bean被创建前、创建中、和创建后都会回调某些方法</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-lifecycle-initializingbean">Initialization Callbacks</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Destruction method</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-lifecycle-disposablebean">Destruction Callbacks</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#beans-factory-lifecycle-disposablebean">Destruction Callbacks（如果是web项目的Bean ，就具有webSocket通信协议）</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -2154,7 +2154,7 @@ injection may be the only available form of DI.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="beans-dependency-resolution"><a class="anchor" href="#beans-dependency-resolution"></a>Dependency Resolution Process</h5>
+<h5 id="beans-dependency-resolution"><a class="anchor" href="#beans-dependency-resolution"></a>Dependency Resolution Process：依赖做的事情</h5>
 <div class="paragraph">
 <p>The container performs bean dependency resolution as follows:</p>
 </div>
@@ -2163,23 +2163,23 @@ injection may be the only available form of DI.</p>
 <li>
 <p>The <code>ApplicationContext</code> is created and initialized with configuration metadata that
 describes all the beans. Configuration metadata can be specified by XML, Java code, or
-annotations.</p>
+annotations.（ApplicationContext描述bean的创建和初始化做的事情）</p>
 </li>
 <li>
 <p>For each bean, its dependencies are expressed in the form of properties, constructor
 arguments, or arguments to the static-factory method (if you use that instead of a
 normal constructor). These dependencies are provided to the bean, when the bean is
-actually created.</p>
+actually created.（每个bea的依赖关系以及本身的bean属性，在容器创建这个bean时都会将这些信息提供给这个bean）</p>
 </li>
 <li>
 <p>Each property or constructor argument is an actual definition of the value to set, or
-a reference to another bean in the container.</p>
+a reference to another bean in the container.（bean在建立依赖时要，创建构造器或set方法 并且指定映射，才能实现依赖注入）</p>
 </li>
 <li>
 <p>Each property or constructor argument that is a value is converted from its specified
 format to the actual type of that property or constructor argument. By default, Spring
 can convert a value supplied in string format to all built-in types, such as <code>int</code>,
-<code>long</code>, <code>String</code>, <code>boolean</code>, and so forth.</p>
+<code>long</code>, <code>String</code>, <code>boolean</code>, and so forth.（）</p>
 </li>
 </ul>
 </div>
@@ -2191,21 +2191,21 @@ when the container is created. Scopes are defined in <a href="#beans-factory-sco
 the bean is created only when it is requested. Creation of a bean potentially causes a
 graph of beans to be created, as the bean&#8217;s dependencies and its dependencies'
 dependencies (and so on) are created and assigned. Note that resolution mismatches among
-those dependencies may show up late&#8201;&#8212;&#8201;that is, on first creation of the affected bean.</p>
+those dependencies may show up late&#8201;&#8212;&#8201;that is, on first creation of the affected bean.（默认spring在项目实例化时就创建到哪里bean，其他作用域都是在用到的时候才创建的。如果bean之间存在相互依赖的关系，如循环依赖如下：）</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Circular dependencies</div>
+<div class="title">Circular dependencies：循环依赖（bean A和bean B 相互依赖）</div>
 <div class="paragraph">
 <p>If you use predominantly constructor injection, it is possible to create an unresolvable
-circular dependency scenario.</p>
+circular dependency scenario.（仅适用构造器来完成依赖注入是不行的）</p>
 </div>
 <div class="paragraph">
 <p>For example: Class A requires an instance of class B through constructor injection, and
 class B requires an instance of class A through constructor injection. If you configure
 beans for classes A and B to be injected into each other, the Spring IoC container
 detects this circular reference at runtime, and throws a
-<code>BeanCurrentlyInCreationException</code>.</p>
+<code>BeanCurrentlyInCreationException</code>.（如果使用构造器完成依赖会抛BeanCurrentlyInCreationException）</p>
 </div>
 <div class="paragraph">
 <p>One possible solution is to edit the source code of some classes to be configured by
@@ -2217,6 +2217,10 @@ circular dependencies with setter injection.</p>
 <p>Unlike the typical case (with no circular dependencies), a circular dependency
 between bean A and bean B forces one of the beans to be injected into the other prior to
 being fully initialized itself (a classic chicken-and-egg scenario).</p>
+</br>
+<a>总结</a>
+<a>解决办法不使用构造器注入，使用set方法注入 并且作用域scope=single ， 在sprig开始启动的时候 能创建这种相互依赖的bean （因为有缓存备份），当两个bean都使用prototype时 ，由于bean的实例化是有顺序的 ，创建A ，依赖B  ，此时B并不存在因此会抛异常</a>
+<a>注意：使用 @DependsOn或@order  让一个bean先于另一个bean之前创建的办法也不行 （因为是双向的关系）</a>
 </div>
 </div>
 </div>
@@ -3169,7 +3173,7 @@ be <code>null</code> after the bean is constructed. Otherwise, a <code>NullPoint
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-dependson"><a class="anchor" href="#beans-factory-dependson"></a>1.4.3. Using <code>depends-on</code></h4>
+<h4 id="beans-factory-dependson"><a class="anchor" href="#beans-factory-dependson"></a>1.4.3. Using <code>depends-on：depends-on的使用场景</code></h4>
 <div class="paragraph">
 <p>If a bean is a dependency of another bean, that usually means that one bean is set as a
 property of another. Typically you accomplish this with the <a href="#beans-ref-element"><code>&lt;ref/&gt;</code>
@@ -3178,7 +3182,7 @@ beans are less direct. An example is when a static initializer in a class needs 
 triggered, such as for database driver registration. The <code>depends-on</code> attribute can
 explicitly force one or more beans to be initialized before the bean using this element
 is initialized. The following example uses the <code>depends-on</code> attribute to express a
-dependency on a single bean:</p>
+dependency on a single bean:（一般bean之间的相互依赖是一个bean作为另一个bean的属性产生依赖关系，但还有一种微弱的依赖关系 。两者属性没有相互的依赖但是 一个bean的实例化 需要另一个bean的支持 这时候可以使用depends-on 来让一个类在另一个类之前实例化，类似@Order注解（设置bean实例化的优先级）   ）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -3280,7 +3284,7 @@ is injected into a singleton bean elsewhere that is not lazy-initialized.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-autowire"><a class="anchor" href="#beans-factory-autowire"></a>1.4.5. Autowiring Collaborators</h4>
+<h4 id="beans-factory-autowire"><a class="anchor" href="#beans-factory-autowire"></a>1.4.5. Autowiring Collaborators（spring的自动装配）</h4>
 <div class="paragraph">
 <p>The Spring container can autowire relationships between collaborating beans. You can
 let Spring resolve collaborators (other beans) automatically for your bean by
@@ -3312,7 +3316,11 @@ per bean and can thus choose which ones to autowire. The following table describ
 four autowiring modes:</p>
 </div>
 <table id="beans-factory-autowiring-modes-tbl" class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. Autowiring modes</caption>
+<caption class="title">Table 2. Autowiring modes（默认关闭 方式：1、byName 2、byType 3、constructor ）</caption>
+</br>
+<a>优点：在使用配置文件时 不用维护依赖关系</a></br>
+<a>缺点：bean的name、type必须是唯一的 ，项目大切复杂不利于维护bean之间的关系 ，且代码模糊不利于可读性</a></br>
+<a>解决办法最好的一种：使用注解 </a></br>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3461,7 +3469,7 @@ using autowiring. Rather, the bean itself is not a candidate for autowiring othe
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-method-injection"><a class="anchor" href="#beans-factory-method-injection"></a>1.4.6. Method Injection</h4>
+<h4 id="beans-factory-method-injection"><a class="anchor" href="#beans-factory-method-injection"></a>1.4.6. Method Injection:方法注入：单例A 引入多例B的情况</h4>
 <div class="paragraph">
 <p>In most application scenarios, most beans in the container are
 <a href="#beans-factory-scopes-singleton">singletons</a>. When a singleton bean needs to
@@ -3471,7 +3479,7 @@ bean as a property of the other. A problem arises when the bean lifecycles are
 different. Suppose singleton bean A needs to use non-singleton (prototype) bean B,
 perhaps on each method invocation on A. The container creates the singleton bean A only
 once, and thus only gets one opportunity to set the properties. The container cannot
-provide bean A with a new instance of bean B every time one is needed.</p>
+provide bean A with a new instance of bean B every time one is needed.（当单例A 中的每个方法依赖多例B ， 当方法调用时 spring只会提供同一个多例Bean，通过实现ApplicationContextWare来进行方法注入可以解决。或者使用lookup注解）</p>
 </div>
 <div class="paragraph">
 <p>A solution is to forego some inversion of control. You can <a href="#beans-factory-aware">make
@@ -3820,7 +3828,7 @@ shortest string that matches an argument type.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes"><a class="anchor" href="#beans-factory-scopes"></a>1.5. Bean Scopes</h3>
+<h3 id="beans-factory-scopes"><a class="anchor" href="#beans-factory-scopes"></a>1.5. Bean Scopes：bean的范围</h3>
 <div class="paragraph">
 <p>When you create a bean definition, you create a recipe for creating actual instances
 of the class defined by that bean definition. The idea that a bean definition is a
@@ -3904,7 +3912,7 @@ For instructions on how to register these or any other custom scopes, see
 </table>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-scopes-singleton"><a class="anchor" href="#beans-factory-scopes-singleton"></a>1.5.1. The Singleton Scope</h4>
+<h4 id="beans-factory-scopes-singleton"><a class="anchor" href="#beans-factory-scopes-singleton"></a>1.5.1. The Singleton Scope单例</h4>
 <div class="paragraph">
 <p>Only one shared instance of a singleton bean is managed, and all requests for beans
 with an ID or IDs that match that bean definition result in that one specific bean
@@ -3947,7 +3955,7 @@ following example:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-scopes-prototype"><a class="anchor" href="#beans-factory-scopes-prototype"></a>1.5.2. The Prototype Scope</h4>
+<h4 id="beans-factory-scopes-prototype"><a class="anchor" href="#beans-factory-scopes-prototype"></a>1.5.2. The Prototype Scope：原型范围</h4>
 <div class="paragraph">
 <p>The non-singleton prototype scope of bean deployment results in the creation of a new
 bean instance every time a request for that specific bean is made. That is, the bean
@@ -4001,7 +4009,9 @@ container, see <a href="#beans-factory-lifecycle">Lifecycle Callbacks</a>.)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-scopes-sing-prot-interaction"><a class="anchor" href="#beans-factory-scopes-sing-prot-interaction"></a>1.5.3. Singleton Beans with Prototype-bean Dependencies</h4>
+<h4 id="beans-factory-scopes-sing-prot-interaction"><a class="anchor" href="#beans-factory-scopes-sing-prot-interaction"></a>1.5.3. Singleton Beans with Prototype-bean Dependencies(这里讲的是：spring实例化的单例bean依赖原型的bean的时候 ，此时这个这个多例的属性在单例bean业绩变成单例的了，因为单例bean是只会被实例化一次 ，从而依赖的多利bean业绩被实例化一次)</h4>
+</br>
+<a>解决 ：单例中的多例属性不能使用依赖注入 ，应该通过Application.getBean（）直接取</a>
 <div class="paragraph">
 <p>When you use singleton-scoped beans with dependencies on prototype beans, be aware that
 dependencies are resolved at instantiation time. Thus, if you dependency-inject a
@@ -4015,17 +4025,17 @@ prototype-scoped bean repeatedly at runtime. You cannot dependency-inject a
 prototype-scoped bean into your singleton bean, because that injection occurs only
 once, when the Spring container instantiates the singleton bean and resolves
 and injects its dependencies. If you need a new instance of a prototype bean at
-runtime more than once, see <a href="#beans-factory-method-injection">Method Injection</a></p>
+runtime more than once, see <a href="#beans-factory-method-injection">Method Injection（解决办法：放弃控制反转，不使用依赖注入 通过ApplicationContext.getBean()获取 1、实现ApplicationContextAware 2、使用@lookup注解）</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-scopes-other"><a class="anchor" href="#beans-factory-scopes-other"></a>1.5.4. Request, Session, Application, and WebSocket Scopes</h4>
+<h4 id="beans-factory-scopes-other"><a class="anchor" href="#beans-factory-scopes-other"></a>1.5.4. Request, Session, Application, and WebSocket Scopes：其他作用域</h4>
 <div class="paragraph">
 <p>The <code>request</code>, <code>session</code>, <code>application</code>, and <code>websocket</code> scopes are available only
 if you use a web-aware Spring <code>ApplicationContext</code> implementation (such as
 <code>XmlWebApplicationContext</code>). If you use these scopes with regular Spring IoC containers,
 such as the <code>ClassPathXmlApplicationContext</code>, an <code>IllegalStateException</code> that complains
-about an unknown bean scope is thrown.</p>
+about an unknown bean scope is thrown.（Request @RequestScope, Session @SessionScope, Application @ApplicationScope, and WebSocket Scopes是不需要做single、prototype设置的 另外这四种是在web容器servlert中进行额外设置才能在项目中起作用 。因为这些跟web有关具体如何初始化设置，取决于servlet的版本）</p>
 </div>
 <div class="sect4">
 <h5 id="beans-factory-scopes-other-web-configuration"><a class="anchor" href="#beans-factory-scopes-other-web-configuration"></a>Initial Web Configuration</h5>
@@ -4041,7 +4051,7 @@ for the standard scopes: <code>singleton</code> and <code>prototype</code>.)</p>
 <div class="paragraph">
 <p>If you access scoped beans within Spring Web MVC, in effect, within a request that is
 processed by the Spring <code>DispatcherServlet</code>, no special setup is necessary.
-<code>DispatcherServlet</code> already exposes all relevant state.</p>
+<code>DispatcherServlet</code> already exposes all relevant state.（springMVC的DispatcherServlet的作用范围是request范围的 ，另外DispatcherServlet也无需进行scope=request的设置，因为他本身就是暴露在请求之外的）</p>
 </div>
 <div class="paragraph">
 <p>If you use a Servlet 2.5 web container, with requests processed outside of Spring&#8217;s
@@ -4049,7 +4059,18 @@ processed by the Spring <code>DispatcherServlet</code>, no special setup is nece
 <code>org.springframework.web.context.request.RequestContextListener</code> <code>ServletRequestListener</code>.
 For Servlet 3.0+, this can be done programmatically by using the <code>WebApplicationInitializer</code>
 interface. Alternatively, or for older containers, add the following declaration to
-your web application&#8217;s <code>web.xml</code> file:</p>
+your web application&#8217;s <code>web.xml</code> file:（在web项目中spring容器启动和关闭操作由web容器的启动和关闭事件触发也就是配置xml中的ContextLoaderListener会触发Spring容器。如果spring中bean需要request,session 等支持 ，由于这些跟请求有关 ：  ）</p>
+</br>
+<h7>request : 一个请求</h7></br>
+<h7>session ：多个请求...等</h7></br>
+<h7>因此还要对每一个请求进行监听，具体如何监听还跟servlet容器的版本有关</h7></br>
+<h7>(如果servlet的版本是2.5这需要RequestContextListener配置在xml，用于监听每次到达的请求 里面两个监听方法是每一个http的初始化  和 每一个http请求的销毁监听)</a>
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;<h7>假如要让这个bean在request起作用<span class="tag">&lt;bean name="car" class="com.baobaotao.scope.Car" scope="request"/></span></h7>
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;<h7>那么在每一个请求到来时都会创建一个car对象，当请求销毁时 就触发car的销毁事件</h7></br>
+&nbsp;&nbsp;&nbsp;&nbsp;<h7>假如要让这个bean在session起作用<span class="tag">&lt;bean name="car" class="com.baobaotao.scope.Car" scope="session"/></h7>
+<h8>如果是Servlet3.0+版本，则使用WebApplicationInitializer 通过编程的方式完成</h8></br>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -4095,10 +4116,16 @@ shows the filter part of a web application:</p>
 </div>
 </div>
 <div class="paragraph">
+</br>
+<h7>这里为什么配置requestContextFilter过滤器？</h7></br>
+<h7>RequestContextFilter过滤器主要用于第三方的Servlet如JSF的FacesServlet。在Spring2.5之前都是使用该过滤器配置</h7></br>
 <p><code>DispatcherServlet</code>, <code>RequestContextListener</code>, and <code>RequestContextFilter</code> all do exactly
 the same thing, namely bind the HTTP request object to the <code>Thread</code> that is servicing
 that request. This makes beans that are request- and session-scoped available further
 down the call chain.</p>
+<a>&nbsp;&nbsp;&nbsp;&nbsp 那么是如何将每一个请求和具体的bean对应上的呢（你的购物车是你的session ，我的购物车是另一个sessionb） ？</a> </br>
+<a>&nbsp;&nbsp;&nbsp;&nbsp;DispatcherServlet，RequestContextListener和RequestContextFilter所有做同样的事情就是本地线程将HTTP request对象绑定到为该请求提供服务的线程上。这使得具有request和session作用域的bean能够在后面的调用链中被访问到 </a> </br>
+<a>他们三者的共同使用，使得web跟spring容器更好的对接</a>
 </div>
 </div>
 <div class="sect4">
@@ -4229,7 +4256,7 @@ following example shows how to do so:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="beans-factory-scopes-other-injection"><a class="anchor" href="#beans-factory-scopes-other-injection"></a>Scoped Beans as Dependencies</h5>
+<h5 id="beans-factory-scopes-other-injection"><a class="anchor" href="#beans-factory-scopes-other-injection"></a>Scoped Beans as Dependencies ：使用代理解决 http类型的scope的依赖</h5>
 <div class="paragraph">
 <p>The Spring IoC container manages not only the instantiation of your objects (beans),
 but also the wiring up of collaborators (or dependencies). If you want to inject (for
@@ -4237,7 +4264,9 @@ example) an HTTP request-scoped bean into another bean of a longer-lived scope, 
 choose to inject an AOP proxy in place of the scoped bean. That is, you need to inject
 a proxy object that exposes the same public interface as the scoped object but that can
 also retrieve the real target object from the relevant scope (such as an HTTP request)
-and delegate method calls onto the real object.</p>
+and delegate method calls onto the real object.（Spring不仅管理项目中的bean而且还维护着他们之间的关系，但是如果要将HTTP请求范围的bean注入到寿命较长范围的另一个bean中时（如session短-----注入---->single单例中）。这样就会有问题 单例bean整个项目只有一个 ，而session在项目中有很多不同的  ，单例依赖session的bean ）</p>
+<h7>这样就会出现跟单例A依赖原型B同样的现象，单例中只始终会有项目第一个实例化的sesion Bean</h7></br>
+<h7>解决办法 可以一个类代理让session 对这个类设置<aop:scoped-proxy/>，然后在单例bean中注入这个代理 ，这样单例bean当真正用到sesion时就会把不同的session注入进来</h7>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4298,7 +4327,7 @@ understand the &#8220;why&#8221; as well as the &#8220;how&#8221; behind it:</p>
         <span class="comment">&lt;!-- instructs the container to proxy the surrounding bean --&gt;</span>
         <span class="tag">&lt;aop:scoped-proxy</span><span class="tag">/&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="tag">&lt;/bean&gt;</span>
-
+	加入 <span class="tag">&lt;aop:scoped-proxy</span><span class="tag">/&gt;</span> 这个 标签 ， 后下面类 userService 依赖的就是代理类了
     <span class="comment">&lt;!-- a singleton-scoped bean injected with a proxy to the above bean --&gt;</span>
     <span class="tag">&lt;bean</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">userService</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">com.something.SimpleUserService</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="comment">&lt;!-- a reference to the proxied userPreferences bean --&gt;</span>
@@ -4439,7 +4468,7 @@ see <a href="#aop-proxying">Proxying Mechanisms</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-scopes-custom"><a class="anchor" href="#beans-factory-scopes-custom"></a>1.5.5. Custom Scopes</h4>
+<h4 id="beans-factory-scopes-custom"><a class="anchor" href="#beans-factory-scopes-custom"></a>1.5.5. Custom Scopes：自定义Bean作用域实现Scope  spring并不推荐使用</h4>
 <div class="paragraph">
 <p>The bean scoping mechanism is extensible. You can define your own
 scopes or even redefine existing scopes, although the latter is considered bad practice
@@ -4650,21 +4679,21 @@ bean itself that is scoped, not the object returned from <code>getObject()</code
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-nature"><a class="anchor" href="#beans-factory-nature"></a>1.6. Customizing the Nature of a Bean</h3>
+<h3 id="beans-factory-nature"><a class="anchor" href="#beans-factory-nature"></a>1.6. Customizing the Nature of a Bean ：自定义Bean</h3>
 <div class="paragraph">
 <p>The Spring Framework provides a number of interfaces you can use to customize the nature
-of a bean. This section groups them as follows:</p>
+of a bean. This section groups them as follows:（如果我们想对Bean进行自定义扩展，可以使用spring提供的接口）</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#beans-factory-lifecycle">Lifecycle Callbacks</a></p>
+<p><a href="#beans-factory-lifecycle">Lifecycle Callbacks（生命周期回调:bean在创建时是有生命周期的我们可以在这个过程中对bean进行扩展）</a></p>
 </li>
 <li>
-<p><a href="#beans-factory-aware"><code>ApplicationContextAware</code> and <code>BeanNameAware</code></a></p>
+<p><a href="#beans-factory-aware"><code>ApplicationContextAware</code> and <code>BeanNameAware（实现这两个接口也可以自定义bean ：ApplicationContextAware 提供容器，BeanNameAware提供别名 ，尽量避免使用 应为吧并不遵循spring 的控制反转）</code></a></p>
 </li>
 <li>
-<p><a href="#aware-list">Other <code>Aware</code> Interfaces</a></p>
+<p><a href="#aware-list">Other <code>Aware</code> Interfaces（其他接口）</a></p>
 </li>
 </ul>
 </div>
@@ -5192,7 +5221,7 @@ default lifecycle processor checks the boolean value returned by each
 started at that point rather than waiting for an explicit invocation of the context&#8217;s or
 its own <code>start()</code> method (unlike the context refresh, the context start does not happen
 automatically for a standard context implementation). The <code>phase</code> value and any
-&#8220;depends-on&#8221; relationships determine the startup order as described earlier.</p>
+&#8220;depends-ondepends-on&#8221; relationships determine the startup order as described earlier.</p>
 </div>
 </div>
 <div class="sect4">
