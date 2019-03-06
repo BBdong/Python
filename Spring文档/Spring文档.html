@@ -5446,7 +5446,7 @@ beans that require programmatic access to the container.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-child-bean-definitions"><a class="anchor" href="#beans-child-bean-definitions"></a>1.7. Bean Definition Inheritance</h3>
+<h3 id="beans-child-bean-definitions"><a class="anchor" href="#beans-child-bean-definitions"></a>1.7. Bean Definition Inheritance:Bena 的继承</h3>
 <div class="paragraph">
 <p>A bean definition can contain a lot of configuration information, including constructor
 arguments, property values, and container-specific information, such as the initialization
@@ -5462,7 +5462,7 @@ with them on this level. Instead, they configure bean definitions declaratively 
 such as the <code>ClassPathXmlApplicationContext</code>. When you use XML-based configuration
 metadata, you can indicate a child bean definition by using the <code>parent</code> attribute,
 specifying the parent bean as the value of this attribute. The following example shows how
-to do so:</p>
+to do so:（Bean是可以继承的，xml配置方式：parent = '父类Name'。如果是ApplicationContext编程方式则是实现ChildBeanDefinition接口）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -5559,7 +5559,7 @@ context will actually (attempt to) pre-instantiate the <code>abstract</code> bea
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-extension"><a class="anchor" href="#beans-factory-extension"></a>1.8. Container Extension Points</h3>
+<h3 id="beans-factory-extension"><a class="anchor" href="#beans-factory-extension"></a>1.8. Container Extension Points:扩展Spring IOC容器</h3>
 <div class="paragraph">
 <p>Typically, an application developer does not need to subclass <code>ApplicationContext</code>
 implementation classes. Instead, the Spring IoC container can be extended by plugging in
@@ -6179,10 +6179,10 @@ product of the <code>FactoryBean</code>, whereas invoking <code>getBean("&amp;my
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-annotation-config"><a class="anchor" href="#beans-annotation-config"></a>1.9. Annotation-based Container Configuration</h3>
+<h3 id="beans-annotation-config"><a class="anchor" href="#beans-annotation-config"></a>1.9. Annotation-based Container Configuration:基于注解配置容器</h3>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Are annotations better than XML for configuring Spring?</div>
+<div class="title">Are annotations better than XML for configuring Spring?（讨论xml和基于注解的配置哪个好）</div>
 <div class="paragraph">
 <p>The introduction of annotation-based configuration raised the question of whether this
 approach is &#8220;better&#8221; than XML. The short answer is &#8220;it depends.&#8221; The long answer is
@@ -6192,7 +6192,7 @@ provide a lot of context in their declaration, leading to shorter and more conci
 configuration. However, XML excels at wiring up components without touching their source
 code or recompiling them. Some developers prefer having the wiring close to the source
 while others argue that annotated classes are no longer POJOs and, furthermore, that the
-configuration becomes decentralized and harder to control.</p>
+configuration becomes decentralized and harder to control.（javaConfig的方式更好 ，两者也可以一起使用）</p>
 </div>
 <div class="paragraph">
 <p>No matter the choice, Spring can accommodate both styles and even mix them together.
@@ -6219,7 +6219,11 @@ applicability. Spring 2.5 also added support for JSR-250 annotations, such as
 <code>@PostConstruct</code> and <code>@PreDestroy</code>. Spring 3.0 added support for JSR-330 (Dependency
 Injection for Java) annotations contained in the <code>javax.inject</code> package such as <code>@Inject</code>
 and <code>@Named</code>. Details about those annotations can be found in the
-<a href="#beans-standard-annotations">relevant section</a>.</p>
+<a href="#beans-standard-annotations">relevant section</a>.（讲述Spring2.0引入了@resource注解（注释在属性的set方法上，强制该类在spring实例化bean时必须注入依赖的对象 ） Spring2.5引入@Autowired 实现了使用注解实现自动装配）</p>
+</br>
+<h7>JSR :java 规范  ，  不使用xml 使用注解配置项目的规范</h7></br>
+<h7>被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器调用一次，类似于Serclet的inti()方法</h7></br>
+<h7>被@PreDestroy修饰的方法会在服务器卸载Servlet的时候运行，并且只会被服务器调用一次，类似于Servlet的destroy()方法</h7></br>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6291,7 +6295,7 @@ it only checks for <code>@Autowired</code> beans in your controllers, and not yo
 <h4 id="beans-required-annotation"><a class="anchor" href="#beans-required-annotation"></a>1.9.1. @Required</h4>
 <div class="paragraph">
 <p>The <code>@Required</code> annotation applies to bean property setter methods, as in the following
-example:</p>
+example:（@Required 注释在set方法时 ，在此对象实例化时必须注入依赖的对象 ，否则会报错）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -6340,6 +6344,14 @@ of using constructor injection for required settings (or a custom implementation
 </div>
 <div class="sect3">
 <h4 id="beans-autowired-annotation"><a class="anchor" href="#beans-autowired-annotation"></a>1.9.2. Using <code>@Autowired</code></h4>
+
+<h7>1、@Autowired是spring自带的注解，通过‘AutowiredAnnotationBeanPostProcessor’ 类实现的依赖注入；</h7></br>
+
+<h7>2、@Autowired是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier；</h7></br>
+
+<h7>3、@Autowired有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，系统不会抛错；</h7></br>
+
+<h7>4、@Autowired可以作用在变量、setter方法、构造函数上</h7></br>
 <div class="admonitionblock note">
 <table>
 <tr>
