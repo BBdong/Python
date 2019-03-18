@@ -7575,7 +7575,17 @@ Central now, simply to be added to the application&#8217;s classpath like any ot
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-classpath-scanning"><a class="anchor" href="#beans-classpath-scanning"></a>1.10. Classpath Scanning and Managed Components</h3>
+<h3 id="beans-classpath-scanning"><a class="anchor" href="#beans-classpath-scanning"></a>1.10. Classpath Scanning and Managed Components:基于注释定义bean</h3>
+<h6>@Qualifier :  放两个类实现serviceImpl1，serviceImpl2 分别实现Service接口时 ，当 在controller依赖注入时 ，只使用@Autowired在注入时会报错 ，Spring框架分不清楚要注入哪一个，因此需要加@Qualifier("serviceImlp1")
+或者使用@Resource注解直接通过name属性注入</h6>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(1)类似@Named注解</h8></br>
+<h6>@Inject : 类似@Autowired也是依赖注入 </h6>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(1)需要项目引入javax.inject.Inject的支持</h8></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(2)@Inject是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Named</h8></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(3)@Inject可以作用在变量、setter方法、构造函数上</h8>	</br>
+<h6>@Named : 类似Qualifier注解</h6>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(1)需要项目引入javax.inject.Inject的支持</h8></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(2)给类取别名方便依赖注入 ，如果根据类别名依赖注入 一般配合@Inject使用</h8></br>
 <div class="paragraph">
 <p>Most examples in this chapter use XML to specify the configuration metadata that produces
 each <code>BeanDefinition</code> within the Spring container. The previous section
@@ -7882,7 +7892,7 @@ with a value of <code>false</code>.
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-scanning-filters"><a class="anchor" href="#beans-scanning-filters"></a>1.10.4. Using Filters to Customize Scanning</h4>
+<h4 id="beans-scanning-filters"><a class="anchor" href="#beans-scanning-filters"></a>1.10.4. Using Filters to Customize Scanning：自定义扫描过滤</h4>
 <div class="paragraph">
 <p>By default, classes annotated with <code>@Component</code>, <code>@Repository</code>, <code>@Service</code>,
 <code>@Controller</code>, or a custom annotation that itself is annotated with <code>@Component</code> are the
@@ -8537,12 +8547,19 @@ classpath.
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-standard-annotations"><a class="anchor" href="#beans-standard-annotations"></a>1.11. Using JSR 330 Standard Annotations</h3>
+<h3 id="beans-standard-annotations"><a class="anchor" href="#beans-standard-annotations"></a>1.11. Using JSR 330 Standard Annotations:Spring JRS 330规范的使用</h3>
 <div class="paragraph">
 <p>Starting with Spring 3.0, Spring offers support for JSR-330 standard annotations
 (Dependency Injection). Those annotations are scanned in the same way as the Spring
-annotations. To use them, you need to have the relevant jars in your classpath.</p>
+annotations. To use them, you need to have the relevant jars in your classpath. ：Spring使用JRS330规范需要javax.inject.Inject的支持</p>
 </div>
+<h6>@Inject : 类似@Autowired也是依赖注入 </h6>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(1)需要项目引入javax.inject.Inject的支持</h8></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(2)@Inject是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Named</h8></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(3)@Inject可以作用在变量、setter方法、构造函数上</h8>	</br>
+<h6>@Named : 类似Qualifier注解</h6>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(1)需要项目引入javax.inject.Inject的支持</h8></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h8>(2)给类取别名方便依赖注入 ，如果根据类别名依赖注入 一般配合@Inject使用</h8></br>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -8782,7 +8799,7 @@ custom component annotations.
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-standard-annotations-limitations"><a class="anchor" href="#beans-standard-annotations-limitations"></a>1.11.3. Limitations of JSR-330 Standard Annotations</h4>
+<h4 id="beans-standard-annotations-limitations"><a class="anchor" href="#beans-standard-annotations-limitations"></a>1.11.3. Limitations of JSR-330 Standard Annotations：JRS330使用的局限性</h4>
 <div class="paragraph">
 <p>When you work with standard annotations, you should know that some significant
 features are not available, as the following table shows:</p>
@@ -8856,7 +8873,7 @@ Spring&#8217;s <code>@Autowired</code> or with non-annotated constructors and se
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-java"><a class="anchor" href="#beans-java"></a>1.12. Java-based Container Configuration</h3>
+<h3 id="beans-java"><a class="anchor" href="#beans-java"></a>1.12. Java-based Container Configuration：Spring容器配置</h3>
 <div class="paragraph">
 <p>This section covers how to use annotations in your Java code to configure the Spring
 container. It includes the following topics:</p>
