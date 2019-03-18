@@ -1,0 +1,7 @@
+*.zip
+
+*.temp
+*.class
+*/target
+*/spring-framework-4.3.x
+
