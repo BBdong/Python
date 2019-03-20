@@ -1,4 +1,4 @@
-
+9330
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -289,7 +289,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#beans-standard-annotations-limitations">1.11.3. Limitations of JSR-330 Standard Annotations</a></li>
 </ul>
 </li>
-<li><a href="#beans-java">1.12. Java-based Container Configuration</a>
+<li><a href="#beans-java">1.12. Java-based Container Configuration：Spring容器的配置（spring容器、web容器）</a>
 <ul class="sectlevel3">
 <li><a href="#beans-java-basic-concepts">1.12.1. Basic Concepts（基础概念）: <code>@Bean</code> and <code>@Configuration</code></a></li>
 <li><a href="#beans-java-instantiating-container">1.12.2. Instantiating the Spring Container by Using <code>AnnotationConfigApplicationContext</code></a>
@@ -8873,10 +8873,12 @@ Spring&#8217;s <code>@Autowired</code> or with non-annotated constructors and se
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-java"><a class="anchor" href="#beans-java"></a>1.12. Java-based Container Configuration：Spring容器配置</h3>
+<h3 id="beans-java"><a class="anchor" href="#beans-java"></a>1.12. Java-based Container Configuration：Spring容器配置(spring容器、web容器)</h3>
 <div class="paragraph">
 <p>This section covers how to use annotations in your Java code to configure the Spring
 container. It includes the following topics:</p>
+<p>annotataionConfigApplicationContext:和@Configration注解搭配 来取代spring 的ApplicaionContext.xml的</p>
+<p>annotataionConfigWebApplicationContext: 通过编程的方式实现Listener、Filter、servlet  来取代spring 的web.xml的</p>
 </div>
 <div class="ulist">
 <ul>
@@ -8999,7 +9001,7 @@ Java-based configuration.</p>
 <p>The following sections document Spring&#8217;s <code>AnnotationConfigApplicationContext</code>, introduced in Spring
 3.0. This versatile <code>ApplicationContext</code> implementation is capable of accepting not only
 <code>@Configuration</code> classes as input but also plain <code>@Component</code> classes and classes
-annotated with JSR-330 metadata.</p>
+annotated with JSR-330 metadata.(AnnotationConfigApplicationContext是在spring3.0被引入的，与此同时也就可以使用@Configuration注解允许无xml实现容器的配置，同时也支持RSJ-330规范)</p>
 </div>
 <div class="paragraph">
 <p>When <code>@Configuration</code> classes are provided as input, the <code>@Configuration</code> class itself
@@ -9035,7 +9037,7 @@ XML-free usage of the Spring container, as the following example shows:</p>
 <div class="paragraph">
 <p>As mentioned earlier, <code>AnnotationConfigApplicationContext</code> is not limited to working only
 with <code>@Configuration</code> classes. Any <code>@Component</code> or JSR-330 annotated class may be supplied
-as input to the constructor, as the following example shows:</p>
+as input to the constructor, as the following example shows:（如上AnnotationConfigApplicationContext不仅可以加载@Configuration实例化spring容器还可以，将单独的某个bean作为参数进行bean的实例化放到容器中）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -9061,7 +9063,7 @@ dependency injection annotations such as <code>@Autowired</code>.</p>
 <p>You can instantiate an <code>AnnotationConfigApplicationContext</code> by using a no-arg constructor
 and then configure it by using the <code>register()</code> method. This approach is particularly useful
 when programmatically building an <code>AnnotationConfigApplicationContext</code>. The following
-example shows how to do so:</p>
+example shows how to do so:（如上AnnotationConfigApplicationContext也可以先实例化一个容器 ，然后通过的容器的register方法将bean的class对象注册到容器中然后refresh添加至Spring容器）</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -9100,7 +9102,7 @@ example shows how to do so:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This annotation enables component scanning.</td>
+<td>This annotation enables component scanning.（scan扫描组件的使用 ，其实san是ApplicationContext的方法，不仅可以通过注解也可以通过context.scan(路径) 进行扫描）</td>
 </tr>
 </table>
 </div>
@@ -9178,7 +9180,7 @@ with <code>AnnotationConfigWebApplicationContext</code>. You can use this implem
 configuring the Spring <code>ContextLoaderListener</code> servlet listener, Spring MVC
 <code>DispatcherServlet</code>, and so forth. The following <code>web.xml</code> snippet configures a typical
 Spring MVC web application (note the use of the <code>contextClass</code> context-param and
-init-param):</p>
+init-param):（支持Web应用程序 AnnotationConfigWebApplicationContext ，主要用于替代web.xml   在配置Spring servlet侦听器，Spring MVC等时 ，可以使用AnnotationConfigWebApplicationContext实现 ，以下代码段配置典型的Spring MVC Web应用程序（请注意context-param和init-param的使用））</p>
 </div>
 <div class="exampleblock">
 <div class="content">

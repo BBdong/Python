@@ -1,18 +1,24 @@
 package com.it;
 
+import com.alibaba.dubbo.config.ApplicationConfig;
+import com.alibaba.dubbo.config.ConsumerConfig;
+import com.alibaba.dubbo.config.RegistryConfig;
+import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.apache.commons.dbcp.BasicDataSource;
-        import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
-        import org.springframework.context.annotation.Bean;
-        import org.springframework.context.annotation.ComponentScan;
-        import org.springframework.context.annotation.Configuration;
-        import org.springframework.core.io.Resource;
-        import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-        import javax.sql.DataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
+import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan("com.it")
+@DubboComponentScan(basePackages = "com.it.service")
 public class SpringApplicationContext {
 
     //创建数据源
@@ -39,21 +45,46 @@ public class SpringApplicationContext {
         //mapper配置 "classpath*:mapping/*Mapper.xml"
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        try{//com/it/dao/mapping/T1DaoMapper.xml
+        try {//com/it/dao/mapping/T1DaoMapper.xml
             sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:com/it/**/*Mapper.xml"));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //<property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"></property>
-        return  sqlSessionFactoryBean;
+        return sqlSessionFactoryBean;
     }
 
     //扫描mapper创建dao代理
     @Bean
-    public MapperScannerConfigurer getMapperScannerConfigurer(){
+    public MapperScannerConfigurer getMapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setBasePackage("com.it.dao");
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactoryBean");
         return mapperScannerConfigurer;
+    }
+
+
+    //dubbo 配置
+    @Bean
+    public ApplicationConfig applicationConfig() {
+        ApplicationConfig applicationConfig = new ApplicationConfig();
+        applicationConfig.setName("consumer-client");
+        return applicationConfig;
+    }
+
+    @Bean
+    public ConsumerConfig consumerConfig() {
+        ConsumerConfig consumerConfig = new ConsumerConfig();
+        consumerConfig.setTimeout(3000);
+        return consumerConfig;
+    }
+
+    @Bean
+    public RegistryConfig registryConfig() {
+        System.out.println("client----RegistryConfig");
+        RegistryConfig registryConfig = new RegistryConfig();
+        registryConfig.setAddress("zookeeper://172.18.44.137:2181");
+        registryConfig.setClient("curator");
+        return registryConfig;
     }
 }
