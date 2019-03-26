@@ -5564,7 +5564,7 @@ context will actually (attempt to) pre-instantiate the <code>abstract</code> bea
 <p>Typically, an application developer does not need to subclass <code>ApplicationContext</code>
 implementation classes. Instead, the Spring IoC container can be extended by plugging in
 implementations of special integration interfaces. The next few sections describe these
-integration interfaces.</p>
+integration interfaces.(开发人员在扩展容器时不需要定义一个ApplicationContext子类来进行扩展而是可以通过实现Spring提供的BeanPostProcessor接口来进行扩展 ，此接口提供了两个回调方法 在Spring实例化Bean之前和实例化Bean之后都会回调这两个方法 ，而我们可以在回调的方法中加入自己的逻辑从而实现扩展的目的)</p>
 </div>
 <div class="sect3">
 <h4 id="beans-factory-extension-bpp"><a class="anchor" href="#beans-factory-extension-bpp"></a>1.8.1. Customizing Beans by Using a <code>BeanPostProcessor</code></h4>
@@ -5584,7 +5584,7 @@ the <code>Ordered</code> interface, too. For further details, see the javadoc of
 <a href="https://docs.spring.io/spring-framework/docs/5.1.5.RELEASE/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html"><code>BeanPostProcessor</code></a>
 and <a href="https://docs.spring.io/spring-framework/docs/5.1.5.RELEASE/javadoc-api/org/springframework/core/Ordered.html"><code>Ordered</code></a> interfaces. See also the note
 on <a href="#beans-factory-programmatically-registering-beanpostprocessors">programmatic
-registration of <code>BeanPostProcessor</code> instances</a>.</p>
+registration of <code>BeanPostProcessor</code> instances</a>.（以上讲了 ：BeanPostProcessor接口定义了您可以实现的回调方法, 通过覆盖实例化逻辑、依赖关系解析逻辑等 以达到扩展容器的目的。如Sring容器完成实例化配置一些自己想要的扩展功能可以通过插入一个或多个BeanPostProcessor 接口的实现 ，然后通过@order注解来规范他们的执行的前后顺序（注意只有在BeanPostProcessor实现Ordered 接口时才能设置此属性如果自己编写BeanPostProcessor，你也应该考虑实现这个Ordered接口））</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -12307,12 +12307,12 @@ by other application modules on the same machine.
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-beanfactory"><a class="anchor" href="#beans-beanfactory"></a>1.16. The <code>BeanFactory</code></h3>
+<h3 id="beans-beanfactory"><a class="anchor" href="#beans-beanfactory"></a>1.16. The <code>BeanFactory:springd的顶级容器</code></h3>
 <div class="paragraph">
 <p>The <code>BeanFactory</code> API provides the underlying basis for Spring&#8217;s IoC functionality.
 Its specific contracts are mostly used in integration with other parts of Spring and
 related third-party frameworks, and its <code>DefaultListableBeanFactory</code> implementation
-is a key delegate within the higher-level <code>GenericApplicationContext</code> container.</p>
+is a key delegate within the higher-level <code>GenericApplicationContext</code> container.（BeanFactroy是Sring的顶级容器，定义了Spring容器的基本核心功能如：各种getBean的重载、是否是单例isSingleton、是否是原型isPrototype、获取类型getType、 根绝类型和名字匹配isMatch()等）。Spring官网强调在开发中 推荐使用ApplicationContext ，而BeanFactory一般是在集成第三方框架时使用  </p>
 </div>
 <div class="paragraph">
 <p><code>BeanFactory</code> and related interfaces (such as <code>BeanFactoryAware</code>, <code>InitializingBean</code>,
@@ -12320,15 +12320,10 @@ is a key delegate within the higher-level <code>GenericApplicationContext</code>
 By not requiring any annotations or even reflection, they allow for very efficient
 interaction between the container and its components. Application-level beans may
 use the same callback interfaces but typically prefer declarative dependency
-injection instead, either through annotations or through programmatic configuration.</p>
+injection instead, either through annotations or through programmatic configuration.（BeanFactory和相关接口（例如BeanFactoryAware，InitializingBean， DisposableBean）能再不使用任何注解或者放射与其他框架整合管理他们 其实xml的最外一层标签<BeanFactory> 就代表着BeanFactory 再这个配置中也常常用于整合第三方框架  ，而在开发时如果想实例化Spring容器 还是要通过ClassPathXmlApplicationContext、AnnotataionApplicationContext等来实例化容器）</p>
 </div>
 <div class="paragraph">
-<p>Note that the core <code>BeanFactory</code> API level and its <code>DefaultListableBeanFactory</code>
-implementation do not make assumptions about the configuration format or any
-component annotations to be used. All of these flavors come in through extensions
-(such as <code>XmlBeanDefinitionReader</code> and <code>AutowiredAnnotationBeanPostProcessor</code>) and
-operate on shared <code>BeanDefinition</code> objects as a core metadata representation.
-This is the essence of what makes Spring&#8217;s container so flexible and extensible.</p>
+
 </div>
 <div class="sect3">
 <h4 id="context-introduction-ctx-vs-beanfactory"><a class="anchor" href="#context-introduction-ctx-vs-beanfactory"></a>1.16.1. <code>BeanFactory</code> or <code>ApplicationContext</code>?</h4>
@@ -12342,7 +12337,7 @@ This is the essence of what makes Spring&#8217;s container so flexible and exten
 as the common implementations for custom bootstrapping. These are the primary entry
 points to Spring&#8217;s core container for all common purposes: loading of configuration
 files, triggering a classpath scan, programmatically registering bean definitions
-and annotated classes, and (as of 5.0) registering functional bean definitions.</p>
+and annotated classes, and (as of 5.0) registering functional bean definitions.（一般开始时实例化容器是通过ApplicationContext来完成的，尤其是从Spring5.0开始使用AnnotationConfigApplicationContext通过javaConfig编程的方式来实例化容器）</p>
 </div>
 <div class="paragraph">
 <p>Because an <code>ApplicationContext</code> includes all the functionality of a <code>BeanFactory</code>, it is

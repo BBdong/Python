@@ -22,6 +22,6 @@ public class SpringApplicationContext {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setAddress("zookeeper://172.18.44.137:2181");
         registryConfig.setClient("curator");
-        return registryConfig;
+        return registryConfig; 
     }
 }

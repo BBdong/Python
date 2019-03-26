@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8838954-c083-4ff1-b86a-76a5293eb868" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/SpringMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubboImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/it/service/TServiceDubbo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/AHelloServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/BHelloServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/HelloService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/T.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dubbo-service/src/main/resources/META-INF.services/JDKSPI.HelloService" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-service/src/main/java/appConfig/DubboProviderConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TService.java" beforeDir="false" afterPath="$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubbo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speingxxx.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/SpringApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/SpringApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/it/controller/T1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/it/controller/T1Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring文档/Spring文档.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring文档/Spring文档.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firestorm.log" beforeDir="false" afterPath="$PROJECT_DIR$/firestorm.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firestorm.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/firestorm.log.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../鲁班学院/Tomcat/code/apache-tomcat-8.5.35-src/target/classes/META-INF/maven/org.apache.tomcat/Tomcat8.5.35/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../鲁班学院/Tomcat/code/apache-tomcat-8.5.35-src/target/classes/META-INF/maven/org.apache.tomcat/Tomcat8.5.35/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../鲁班学院/springBoot/~$SpringBoot手动实现(SpringMVC源码).doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../鲁班学院/dubbo/1-dubbo.doc" beforeDir="false" afterPath="$PROJECT_DIR$/../../鲁班学院/dubbo/1-dubbo.doc" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,58 +26,59 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/HelloService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="3" column="51" lean-forward="true" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
+            <state relative-caret-position="116">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringMain.java">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/AHelloServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+            <state relative-caret-position="145">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="49" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#117#118#0" expanded="true" />
+                <element signature="e#173#174#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dubbo-service/pom.xml">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/BHelloServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="116">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$USER_HOME$/Desktop/XftpDragDropSupportDir262764137/BOOT-INF/classes/com/cmcc/dhome/device/threat/service/impl/BwlistServiceImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="113" column="24" lean-forward="true" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubboImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            <state relative-caret-position="274">
+              <caret line="105" column="20" lean-forward="true" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/controller/T1Controller.java">
+        <entry file="file://$USER_HOME$/Desktop/XftpDragDropSupportDir262764137/BOOT-INF/classes/com/cmcc/dhome/device/threat/web/interceptor/GatewayPermissionValidateInterceptor.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+            <state relative-caret-position="5220">
+              <caret line="210" column="41" lean-forward="true" selection-start-line="210" selection-start-column="41" selection-end-line="210" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/T.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,28 +87,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubbo.java">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/resources/META-INF.services/JDKSPI.HelloService">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="116">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/service/TServiceDubbo.java">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/ThreadGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+            <state relative-caret-position="26216">
+              <caret line="941" selection-start-line="941" selection-end-line="941" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/SpringApplicationContext.java">
+        <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="580">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/it/SpringMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="203">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -175,8 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/JAVAConfigration.java" />
-        <option value="$PROJECT_DIR$/target/classes/META-INF/service/javax.servlet.ServletContainerInitializer" />
         <option value="$PROJECT_DIR$/src/main/resources/services/javax.servlet.ServletContainerInitializer" />
         <option value="$PROJECT_DIR$/src/main/java/T.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/servlet/T1Servlet.java" />
@@ -216,12 +207,18 @@
         <option value="$PROJECT_DIR$/dubbo-service/src/main/resources/provider.xml" />
         <option value="$PROJECT_DIR$/dubbo-service/src/main/java/SpringMain.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/it/SpringApplicationContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/service/TServiceDubbo.java" />
         <option value="$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubbo.java" />
         <option value="$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubboImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/controller/T1Controller.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/AHelloServiceImpl.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/BHelloServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/SpringApplicationContext.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/HelloService.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/resources/JDKSPI.HelloService" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/T.java" />
+        <option value="$PROJECT_DIR$/dubbo-service/src/main/resources/META-INF.services/JDKSPI.HelloService" />
       </list>
     </option>
   </component>
@@ -238,7 +235,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1386" />
@@ -250,6 +247,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -291,7 +289,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="JDKSPI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="speingxxx" type="b2602c69:ProjectViewProjectNode" />
@@ -300,6 +298,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="speingxxx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="speingxxx" type="462c0819:PsiDirectoryNode" />
+              <item name="dubbo-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF.services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="speingxxx" type="b2602c69:ProjectViewProjectNode" />
@@ -349,13 +356,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553066628394" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553155038286" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../dubbo-admin/incubator-dubbo-admin-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -378,12 +384,14 @@
       <recent name="E:\JAVAWork\IDEASpace\speingxxx\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="JDKSPI" />
       <recent name="com.it.service" />
       <recent name="com.it.dubboService" />
       <recent name="" />
       <recent name="com.it.controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PythonWork\notes\Python\Project\speingxxx\dubbo-service\src\main\resources\META-INF.service" />
       <recent name="E:\JAVAWork\IDEASpace\speingxxx\src\main\java\com\it\dao\mapping" />
       <recent name="E:\JAVAWork\IDEASpace\speingxxx\src\main\java\com\it\dao" />
       <recent name="E:\JAVAWork\IDEASpace\speingxxx\src\main\resources\META-INF" />
@@ -402,7 +410,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SpringMain">
+  <component name="RunManager" selected="Application.T (2)">
     <configuration name="SpringMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpringMain" />
       <module name="dubbo-service" />
@@ -449,15 +457,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="T" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="T" />
-      <module name="speingxxx" />
+    <configuration name="T (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JDKSPI.T" />
+      <module name="dubbo-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JDKSPI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.it.WebApplication" />
+    <configuration name="T" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="T" />
       <module name="speingxxx" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -504,20 +518,20 @@
     <list>
       <item itemvalue="Application.T (1)" />
       <item itemvalue="Application.T" />
-      <item itemvalue="Application.WebApplication" />
       <item itemvalue="Application.YamlUtils" />
       <item itemvalue="Application.StartTomcat" />
       <item itemvalue="Application.SpringMain" />
       <item itemvalue="Application.SpringMain (1)" />
+      <item itemvalue="Application.T (2)" />
       <item itemvalue="Maven.speingxxx [tomcat7:run]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SpringMain" />
+        <item itemvalue="Application.T (2)" />
         <item itemvalue="Application.SpringMain (1)" />
+        <item itemvalue="Application.SpringMain" />
         <item itemvalue="Application.StartTomcat" />
         <item itemvalue="Application.YamlUtils" />
-        <item itemvalue="Application.WebApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -545,15 +559,19 @@
       <workItem from="1552977929569" duration="4068000" />
       <workItem from="1552982198610" duration="3488000" />
       <workItem from="1553045790526" duration="5253000" />
-      <workItem from="1553064712217" duration="1832000" />
+      <workItem from="1553064712217" duration="3362000" />
+      <workItem from="1553138093829" duration="1438000" />
+      <workItem from="1553150468197" duration="4217000" />
+      <workItem from="1553217853529" duration="1524000" />
+      <workItem from="1553240473044" duration="1851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106766000" />
+    <option name="totallyTimeSpent" value="117326000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1386" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
@@ -562,7 +580,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.2616893" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.27685326" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
@@ -628,59 +646,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.5/tomcat-embed-core-8.5.5-sources.jar!/org/apache/catalina/WebResourceRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="252" column="39" selection-start-line="252" selection-start-column="25" selection-end-line="252" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.5/tomcat-embed-core-8.5.5-sources.jar!/org/apache/catalina/WebResourceSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="136" column="36" selection-start-line="136" selection-start-column="22" selection-end-line="136" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.5/tomcat-embed-core-8.5.5-sources.jar!/org/apache/catalina/webresources/DirResourceSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-590">
-          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-          <folding>
-            <element signature="e#1748#1749#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/tomcat/conf/web.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.9.RELEASE/spring-web-5.0.9.RELEASE-sources.jar!/org/springframework/web/bind/annotation/RequestMapping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="205" column="7" lean-forward="true" selection-start-line="205" selection-start-column="7" selection-end-line="205" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/Servlet.java" />
-    <entry file="file://$PROJECT_DIR$/target/classes/static/index.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/chat.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jquery.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -838,13 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="3" column="51" lean-forward="true" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -868,25 +826,113 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/com/it/service/TServiceDubboImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        <state relative-caret-position="145">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringMain.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.2/dubbo-2.6.2.jar!/com/alibaba/dubbo/config/annotation/Service.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        <state relative-caret-position="290">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/controller/T1Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.2/dubbo-2.6.2.jar!/com/alibaba/dubbo/config/annotation/Reference.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.6.2/dubbo-2.6.2.jar!/com/alibaba/dubbo/config/RegistryConfig.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding>
+            <element signature="e#1745#1746#0" expanded="true" />
+            <element signature="e#1783#1784#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/it/SpringApplicationContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="303">
+          <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/resources/META-INF.service/JDKSPI.HelloService" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="760" column="28" selection-start-line="760" selection-start-column="28" selection-end-line="760" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/HelloService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/AHelloServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="49" />
+          <folding>
+            <element signature="e#117#118#0" expanded="true" />
+            <element signature="e#173#174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/T.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/ThreadGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26216">
+          <caret line="941" selection-start-line="941" selection-end-line="941" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/SpringApplicationContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -895,18 +941,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/it/SpringMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="203">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/controller/T1Controller.java">
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/resources/META-INF.services/JDKSPI.HelloService">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="116">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dubbo-service/src/main/java/JDKSPI/BHelloServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/XftpDragDropSupportDir262764137/BOOT-INF/classes/com/cmcc/dhome/device/threat/service/impl/BwlistServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="105" column="20" lean-forward="true" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/XftpDragDropSupportDir262764137/BOOT-INF/classes/com/cmcc/dhome/device/threat/web/interceptor/GatewayPermissionValidateInterceptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5220">
+          <caret line="210" column="41" lean-forward="true" selection-start-line="210" selection-start-column="41" selection-end-line="210" selection-end-column="41" />
         </state>
       </provider>
     </entry>
