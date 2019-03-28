@@ -20,13 +20,14 @@ public class T1Controller {
     private T1Service t1Service;
 
 
-    @Reference(version = "1.0",group = "demo-dubbo")
-    public TServiceDubbo tServiceDubbo;
+//    @Reference(version = "1.0",group = "demo-dubbo")
+//    public TServiceDubbo tServiceDubbo;
 
     @RequestMapping("/t1")
     @ResponseBody
     public String t1() {
         System.out.println("===================");
-        return tServiceDubbo.getUserService("dubbo>>>>>>success!");
+       // return tServiceDubbo.getUserService("dubbo>>>>>>success!");
+        return "";
     }
 }

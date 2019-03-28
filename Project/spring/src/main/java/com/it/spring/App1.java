@@ -1,8 +1,7 @@
 package com.it.spring;
 
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.it.springinterface.App;
@@ -12,14 +11,12 @@ public class App1 {
 	
 	
 	
-	@Inject
-	private App app2;
+	@Autowired
+	private App1 A;
 		
 	
 	
 	public void app1() {
-		app2.aap2();
-		
 		System.out.println("--------------------");
 	}
 	

@@ -20,7 +20,8 @@ public class StartTomcat implements Runnable {
         ApplicaitonContext.refresh();
         //将springMVC DsipatcherServlet交给spring容器管理
         DispatcherServlet dispatcherServlet = new DispatcherServlet(ApplicaitonContext);
-
+        Object servlet = ApplicaitonContext.getBean("dispatcherServlet");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>"+servlet);
         //创建tomcat实例
         Tomcat tom = new Tomcat();
         //设置端口

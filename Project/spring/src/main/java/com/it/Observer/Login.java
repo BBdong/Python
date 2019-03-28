@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Login {
 	
-	List<UserInfoListener> userss = new ArrayList<UserInfoListener>();
+	List<UserInfoListener> userss = new ArrayList<>();
 	
 	public Login(List<UserInfoListener> users) {
 		userss.addAll(users);

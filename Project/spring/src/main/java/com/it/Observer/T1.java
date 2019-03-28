@@ -14,7 +14,7 @@ public class T1 {
 		UserInfo user2 = new UserInfo();
 		user1.setName("小明");
 		user2.setName("小hong");
-		List< UserInfoListener> list = new ArrayList<UserInfoListener>();
+		List< UserInfoListener> list = new ArrayList<>();
 		list.add(user1);
 		list.add(user2);
 		

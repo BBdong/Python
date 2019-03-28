@@ -1,4 +1,4 @@
-package com.it.BeanFactoryAndFactoryBean;
+package BeanFactoryAndFactoryBean;
 
 import org.springframework.stereotype.Component;
 

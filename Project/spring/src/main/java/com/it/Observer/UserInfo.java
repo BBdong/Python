@@ -16,9 +16,9 @@ public class UserInfo implements UserInfoListener {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
 	@Override
 	public void info(Event event) {
+		
 		System.out.println(event.getMag());
 	}
 	
