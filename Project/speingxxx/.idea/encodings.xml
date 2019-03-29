@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+  <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+<<<<<<< HEAD:鲁班学院/springBoot/speingxxx/.idea/encodings.xml
+    <file url="PROJECT" charset="UTF-8" />
+=======
     <file url="file://$PROJECT_DIR$/dubbo-service" charset="UTF-8" />
+>>>>>>> 50f2b86061d81c3ed914d8bc9312899cef5d9f10:Project/speingxxx/.idea/encodings.xml
   </component>
 </project>
