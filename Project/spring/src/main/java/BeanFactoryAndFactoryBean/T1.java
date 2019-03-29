@@ -3,6 +3,7 @@ package BeanFactoryAndFactoryBean;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Component;
 
+@Component
 public class T1 implements FactoryBean {
 	
 	public void a() {
