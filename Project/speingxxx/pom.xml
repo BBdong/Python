@@ -8,8 +8,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>dubbo-service</module>
-        <module>mq</module>
-        <module>mq-customer</module>
+        <module>rabbit-publisher</module>
     </modules>
     <packaging>pom</packaging>
     <name>speingxxx Maven Webapp</name>
