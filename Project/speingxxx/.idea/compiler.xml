@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <resourceExtensions />
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-<<<<<<< HEAD
         <module name="dubbo-service" />
-=======
-<<<<<<< HEAD:鲁班学院/springBoot/speingxxx/.idea/compiler.xml
-        <processorPath useClasspath="true" />
-        <module name="speingxxx" />
-=======
->>>>>>> 05d31f6e25b9af2b33387adbc53327b7bce2015a
-        <module name="dubboservice" />
->>>>>>> 50f2b86061d81c3ed914d8bc9312899cef5d9f10:Project/speingxxx/.idea/compiler.xml
+        <module name="rabbit-customer" />
+        <module name="rabbit-publisher" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
-      <module name="speingxxx" target="1.7" />
+    <bytecodeTargetLevel>
+      <module name="mq" target="1.7" />
+      <module name="mqcustomer" target="1.7" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="rabbit-customer" options="-parameters" />
+      <module name="rabbit-publisher" options="-parameters" />
+    </option>
   </component>
 </project>

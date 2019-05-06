@@ -11,14 +11,17 @@ E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\Observer\UserInfo
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\proxy\Interface.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SpringPublisher\SpringServer1.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SpringPublisherAnnotataion\EmailServiceIterface.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\beanFactoryPostProcessor\T1.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\BeanFactoryAndFactoryBean\T1.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\Observer\UserInfoListener.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SpringPublisherAnnotataion\EmailService2.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\aop\AspectAOP.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\spring\App3.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SingletonBeanswithPrototypebeanDependencies\T.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\proxy\CompilerUtils.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\interfaceAOP\TargerInterface.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\BeanFactoryAndFactoryBean\T3.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\TEST\T1.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\proxy\ProxyUtil.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\proxy\ProxyClass.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\Springeventobservable\UserListener.java
@@ -28,7 +31,9 @@ E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\Observer\Event.ja
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SpringPublisherAnnotataion\BlackListEvent2.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\proxy\IOUtils.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\proxy\TargetClass.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\spring\App2.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\springinterface\App.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\beanPostProcessor\Proxy.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SpringPublisher\MyEvent2.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\SpringPublisher\MyEvent.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\beanPostProcessor\IndexBean.java
@@ -58,3 +63,6 @@ E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\DefinedBean\TestB
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\Observer\Login.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\BeanFactoryAndFactoryBean\T2.java
 E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\beanPostProcessor\ApplcationConfig.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\beanFactoryPostProcessor\A.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\spring\App1.java
+E:\PythonWork\notes\Python\Project\spring\src\main\java\com\it\beanFactoryPostProcessor\MyBeanFactoryPostProcessor.java
