@@ -1,0 +1,4 @@
+SpringCloud 
+eurekaServer服务端 集群时 实现高可用的注意 ：   client 的defaultZone ：不配自己 只配其他
+ 
+
