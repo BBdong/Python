@@ -6,20 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo (1) (rabbit-customer)" />
+        <module name="demo (2) (com.rabbitmq-publisher)" />
         <module name="dubbo-service" />
         <module name="rabbit-customer" />
         <module name="rabbit-publisher" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="demo (1) (rabbit-customer)" target="1.8" />
+      <module name="demo (2) (com.rabbitmq-publisher)" target="1.8" />
+      <module name="dubbo-service" target="1.7" />
       <module name="mq" target="1.7" />
       <module name="mqcustomer" target="1.7" />
+      <module name="speingxxx" target="1.7" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="rabbit-customer" options="-parameters" />
-      <module name="rabbit-publisher" options="-parameters" />
-    </option>
   </component>
 </project>

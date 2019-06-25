@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/rabbit-customer/demo (1) (rabbit-customer).iml" filepath="$PROJECT_DIR$/rabbit-customer/demo (1) (rabbit-customer).iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbit-publisher/demo (2) (com.rabbitmq-publisher).iml" filepath="$PROJECT_DIR$/rabbit-publisher/demo (2) (com.rabbitmq-publisher).iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-service/dubbo-service.iml" filepath="$PROJECT_DIR$/dubbo-service/dubbo-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/speingxxx.iml" filepath="$PROJECT_DIR$/speingxxx.iml" />
+    </modules>
+  </component>
+</project>

@@ -10,6 +10,7 @@ public class T {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringApplicationConfig.class);
         OrderService orderService = context.getBean(OrderService.class);
         orderService.order();
+
     }
 
 }
