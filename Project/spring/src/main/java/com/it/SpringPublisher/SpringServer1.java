@@ -21,10 +21,7 @@ public class SpringServer1 {
 		e.setFlage(true);
 		//发布事件，然后触发监听
 		eventPublisher.publishEvent(e);
-		System.out.println("111============");
-		//ApplicationEventPublisherAware
-		//ApplicationContext 
-		//BeanNameAware 
+
 	}
 	
 }
