@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="speingxxx:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="mvc-1.war">
-      <element id="artifact" artifact-name="speingxxx:war exploded" />
-    </root>
-  </artifact>
-</component>
